@@ -17,6 +17,9 @@ module SilverwebPortfolio
     
     initializer "silverweb_portfolio.update_picture_model" do      
     
+        SilverwebCms::Config.add_nav_item({:name=>"Portfolio", :controller=>'portfolios', :action=>'index'})
+
+      
       Picture.class_eval do
         belongs_to :artifacts, :polymorphic => true
       end

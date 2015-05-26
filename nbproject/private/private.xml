@@ -3,8 +3,46 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/.gitignore</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/hold/site_controller.rb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/assets/javascripts/silverweb_portfolio.js</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/controllers/artifacts_controller.rb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/assets/stylesheets/portfolios.css</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/assets/javascripts/artifacts/edit.js</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/lib/silverweb_portfolio/controller_extensions.rb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/helpers/portfolios_helper.rb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/assets/stylesheets/silverweb_portfolio.css</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/views/artifacts/index.html.erb</file>
             <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/Gemfile</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/assets/javascripts/portfolios/shared.js</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/views/portfolios/edit.html.erb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/helpers/artifacts_helper.rb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/views/artifacts/_image.html.erb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/lib/silverweb_portfolio.rb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/models/artifact.rb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/views/site/portfolio_detail.erb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/lib/silverweb_portfolio/engine.rb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/controllers/portfolios_controller.rb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/models/portfolio.rb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/lib/silverweb_portfolio/version.rb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/assets/javascripts/portfolios/index_.js</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/views/artifacts/edit.html.erb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/views/portfolios/_artifact_list.erb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/views/artifacts/artifacts_table.json.erb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/views/artifacts/_image_section.html.erb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/assets/stylesheets/artifacts.css</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/.hgignore</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/assets/javascripts/artifacts/shared.js</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/views/portfolios/index.html.erb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/views/artifacts/_form.html.erb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/assets/javascripts/portfolios/edit.js</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/config/routes.rb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/views/site/artifact_detail.erb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/lib/silverweb_portfolio/raility.rb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/views/portfolios/portfolio_table.json.erb</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/app/views/artifacts/_images.html.erb</file>
             <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/silverweb_portfolio.gemspec</file>
+            <file>file:/Users/rlittle/Development/Rails/bitbucket/gems/silverweb_portfolio/config/initializers/picture_updates.rb</file>
         </group>
     </open-files>
 </project-private>

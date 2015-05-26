@@ -13,7 +13,9 @@
       end
     end
     
-    SilverwebCms::Config.add_nav_item({:name=>"Portfolio", :controller=>'portfolios', :action=>'index'})
 
   end
+  
+  SilverwebCms::Config.add_nav_item({:name=>"Portfolio", :controller=>'portfolios', :action=>'index'})
+
 end

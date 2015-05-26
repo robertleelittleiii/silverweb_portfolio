@@ -135,6 +135,7 @@ div#portfolio-list {
   margin-right: auto;
   display: table;
   padding-top: 20px;
+  width:912px;
 }   
 
 div.portfolio-picture img {

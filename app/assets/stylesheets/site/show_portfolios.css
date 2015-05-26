@@ -131,9 +131,11 @@ font-size: 13px;
 }
 
 div#portfolio-list {
-width: 1024px;
-margin-left: -13px;
-}
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+  padding-top: 20px;
+}   
 
 div.portfolio-picture img {
 width: 275px;

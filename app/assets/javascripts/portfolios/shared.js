@@ -25,7 +25,12 @@ function portfolioeditClickBinding(selector) {
                     completion: function completionCallback() {
                         if ($("table#portfolio-table").length > 0)
                             portfolioTableAjax.fnDraw();
-                        if ($("div#edit-portfolio-dialog").length > 0)
+                        
+                         if ($("a[name='top-of-page']").attr("href")=="/site/show_portfolios")
+                        {
+                            site_show_portfolios();
+                        }
+                        else if ($("div#edit-portfolio-dialog").length > 0)
                         {
                             current_portfolio_id = $("div#portfolio-id").first().text();
                             if (portfolio_id === current_portfolio_id)
@@ -34,6 +39,8 @@ function portfolioeditClickBinding(selector) {
 
                             }
                         }
+                        
+                       
 
                         tinyMCE.editors[0].destroy();
                         $('#edit-portfolio-dialog').html("");
@@ -89,6 +96,29 @@ function show_portfolio(portfolio_id) {
         }
     }
     var url = "/site/portfolio_detail?id=" + portfolio_id
+    $.ajax({
+        url: url,
+        type: 'get',
+        success: function (data)
+        {
+            $("div#content").html(data);
+            if (typeof (call_document_ready_on_portfolio_detail) != "undefined") {
+                call_document_ready_on_portfolio_detail();
+            }
+            setUpOrderChange();
+            enablePortfolioEdit();
+            enableArtifactEdit();
+            enableSliderEdit();
+        }
+    });
+
+}
+
+
+function site_show_portfolios() {
+
+    var url = "/site/show_portfolios"
+    
     $.ajax({
         url: url,
         type: 'get',

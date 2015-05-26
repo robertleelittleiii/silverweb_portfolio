@@ -101,14 +101,14 @@ font-size: 13px;
 }
 
 div#portfolio-footer {
-bottom: 0px;
-position: absolute;
-width: 885px;
-text-align: right;
-text-transform: uppercase;
-color: black;
-font-family: open_sansbold;
-padding-bottom: 10px;
+  bottom: 10px;
+  position: absolute;
+  width: 885px;
+  text-align: right;
+  text-transform: uppercase;
+  color: black;
+  font-family: open_sansbold;
+  padding-bottom: 10px;
 }
 
 div#portfolio-footer a {
@@ -131,4 +131,6 @@ div.artifact-detail {
   margin-right: auto;
   margin-top: 20px;
   position: relative;
+  height: 100%;
+
 }

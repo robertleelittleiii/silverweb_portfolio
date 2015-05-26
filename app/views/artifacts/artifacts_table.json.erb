@@ -1,0 +1,13 @@
+{"sEcho": <%= params[:sEcho] || -1 %>,
+ "iTotalRecords": <%= @total_objects %>,
+ "iTotalDisplayRecords": <%= @total_objects %>,
+ "aaData":[
+<% @objects.each do |artifact| %>
+  [
+   "<%=artifact.id %> <div id='artifact-id' class='hidden-item'><%= artifact.id%></div> ",
+   "<div> <%=json_clean(editablefieldcreate("name",artifact)).html_safe%> </div>",
+   "<div> <%=json_clean(editablefieldcreate("description",artifact)).html_safe%> </div>",
+   "<center><div class='delete-artifact-item'><%=image_tag('interface/delete.png', :border=>'0').gsub("\"", "'").html_safe() %></div> </center>"
+   ] <% if @objects.last != artifact then %> , <% end %>
+<% end %>
+]}

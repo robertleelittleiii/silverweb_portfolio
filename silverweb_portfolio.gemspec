@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = SilverwebPortfolio::VERSION
   s.authors     = ["Robert Lee Little III"]
   s.email       = ["rob@silverwebsystems.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of SilverwebPortfolio."
-  s.description = "TODO: Description of SilverwebPortfolio."
+  s.homepage    = "http://www.silverwebsystems.com"
+  s.summary     = "This is gem to create a basic portfolio on to of silverweb_cms"
+  s.description = "This gem is an add on to the silverweb_cms."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

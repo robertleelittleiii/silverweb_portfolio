@@ -1,0 +1,58 @@
+<div class="hidden-item" id="portfolio-id"><%= @portfolio.id %></div>
+
+         <p>
+        <b>Active:</b><br>
+     <%=editablecheckboxedit("portfolio_active", @portfolio, "Active?")%>
+         </p>
+         
+      <p>
+        <b>Name:</b><br>
+        <%=editablefieldcreate("name", @portfolio)%>
+      </p>
+
+        <p>
+        <b>Location:</b><br>
+        <%=editablefieldcreate("location", @portfolio)%>
+      </p>
+
+
+     
+      <%#*<p>%>
+        <%#*<b>description:</b><br>%>
+        <%#=editablefieldcreate("description", @portfolio)%>
+      <%#*</p>%>
+      
+      <p>
+        <b>Description:</b><br>
+   <% form_for(@portfolio, :remote=>true) do |f| %>
+  <%#= f.submit "Update"%><br>
+
+        <center>
+          <%= f.text_area :description, :class => "mceEditor"%>
+        </center>
+        <br>
+      <% end %>
+</p>
+
+<hr>
+      <p>
+        <b>Meta Description:</b><br>
+        <%=editablefieldcreate("meta_description", @portfolio)%>
+      </p>
+
+
+
+      <p>
+        <b>Meta Keywords:</b><br>
+        <%=editablefieldcreate("meta_keywords", @portfolio)%>
+      </p>
+
+
+
+      <p>
+        <b>Meta Robots:</b><br>
+        <%=editablefieldcreate("meta_robots", @portfolio)%>
+      </p>
+
+
+      

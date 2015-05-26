@@ -1,0 +1,167 @@
+/* 
+    Document   : artifacts
+    Created on : Jun 4, 2014, 5:56:59 PM
+    Author     : rlittle
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.imageSingle {
+    display: inline-block;
+    text-align: center;
+    border: 1px dotted grey;
+    padding: 5px;
+    margin: 5px;
+    border-image: initial;
+}
+
+.myaccountcontentitem {
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-left: 29px;
+    display: inline-block;
+    margin-bottom: 15px;
+    font-size: 12pt;
+    font-weight: normal;
+}
+
+.imageName .myaccountcontentitem {
+    padding-left: 0px !important;
+
+
+}
+
+#imagebutton {
+    display: inline-block;
+    margin: 20px;
+}
+
+#imagebutton {
+    display: inline-block;
+    margin: 20px;
+}
+
+input#image.file:hover {
+    cursor:pointer;
+}
+
+
+.address-lable {
+    background: transparent;
+    border-width: 1px;
+    border-style: none;
+    border-color: grey;
+    padding: 2px;
+    margin: 2px;
+    font-weight: bold;
+    font-size: 16px;  
+    color:#004194;
+
+}
+
+.product-legend {
+    background: #CEFAD1;
+    width: 943px;
+    padding: 15px;
+    margin: 10px;
+    background-color: #CEFAD1;
+}
+
+
+
+.address-table td{
+    background-color: white;
+    border-color:black;
+    border-style:dotted;
+    border-width:.5px;
+
+    overflow: hidden;
+    height:30px;
+
+    font-weight: bold;
+    color:gray;
+
+}
+.address-table tr{
+    height:20px;
+
+}
+
+.address-table{
+    width:100%;
+    margin-top:-15px;
+
+}
+.address-legend {
+  background: #DFDFDF;
+  padding: 15px;
+  background-color: #DCDCDC;
+  margin: 10px;
+}
+
+
+.div-category {
+    display: inline-block;
+    border: 1px lightgray dotted;
+    padding: 3px;
+    margin: 4px;
+    border-image: initial;
+}
+
+.div-department {
+    display: inline-block;
+    border: 1px lightgray dotted;
+    padding: 3px;
+    margin: 4px;
+    border-image: initial;
+}
+
+
+fieldset.department {
+    margin: 5px 10px 5px 10px;
+}
+
+.file-item {
+    cursor: -webkit-grab;
+}
+
+
+ 
+
+    
+
+.hover-block {
+display:none;
+background-color: rgba(255, 255, 255, 0.5);
+position: absolute;
+top: 0px;
+width: 100%;
+height: 100%;
+}
+
+div.hover-block div.ui-button {
+display: block;
+position: relative;
+margin-top: 12px;
+width: 100px;
+margin-left: auto;
+margin-right: auto;
+}
+
+div.hover-block div.ui-button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+div.picture-info {
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: -10px;
+}

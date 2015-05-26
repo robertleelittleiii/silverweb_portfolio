@@ -1,0 +1,16 @@
+ 
+ <% @admin_active=admin_active() || "" %>
+ <% artifact = @artifact if artifact.blank? %>                
+                      <%=artifact_edit_div(artifact)%>
+
+                      <%=link_to((image_tag(artifact.pictures.visible.first.blank? ? "empty.jpg" : artifact.pictures.visible.first.image_url(:artifact_list).to_s, :class=>"portfolio-thumb") rescue image_tag("empty.jpg")), {:action=>:artifact_detail, :id=>artifact.id}, :class=>"portfolio-thumb-item") rescue ""%>
+
+                      <div class="artifact-name">
+                          <%=artifact.name %>
+                      </div>  
+
+                      <% if @admin_active=="true" then %>
+                        <%= image_tag("interface/handle.png",:class=>"handle") %>
+                        <div class="hover-div"></div>
+
+                      <% end %>

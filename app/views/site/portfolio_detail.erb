@@ -1,0 +1,60 @@
+<div id="attr-pages" class="hidden-item">
+    <div id="full-screen">true</div>
+    <div id="admin-active"><%=  @admin_active=admin_active() || "" %></div>
+</div>
+
+<%=portfolio_edit_div(@portfolio) %>
+
+<div id="portfolio-block">
+    <div id="portfolio-header">
+
+    </div>
+    <div id="portfolio-id" class="hidden-item">
+        <%=@portfolio.id%>
+    </div>
+
+    <div id="portfolio-body">
+        <div id="portfolio-left-pane">
+
+            <div id="portfolio-image-block">
+                  <%= image_tag(((@portfolio.artifacts.order(:position)[0].pictures.where(:active_flag=>true).where(:title=>"Cover")[0].blank? ? "empty.jpg" : @portfolio.artifacts.order(:position)[0].pictures.where(:active_flag=>true).where(:title=>"Cover")[0].image_url(:large).to_s ) rescue "empty.jpg")) %>
+            </div>
+
+            <div id="portfolio-name">
+                <%= @portfolio.name.to_s.html_safe %></br>
+            </div>
+
+            <div id="portfolio-location">
+                <%= @portfolio.location.to_s.html_safe %></br>
+            </div>
+
+            <div id="portfolio-description">
+                <%= @portfolio.description.to_s.html_safe %></br>
+            </div>
+        </div>
+
+        <div id="portfolio-right-pane">
+
+            <div id="portfolio-artifacts">
+                <% if (@artifacts.size == 0) then %>
+                <div style="color:red; font-size:20px; margin-top:20px;  ">Warning No Artifacts have been created!</div><br>
+                <% else %>
+                <% @artifacts.each_with_index do | artifact, index| %>
+
+                  <div class="portfolio-artifact <%=@admin_active=="true" ? " admin" : "" %> " id="artifact_<%=artifact.id%>">
+                      <%= render :partial=>"artifact_item.html", :locals=>{:artifact=>artifact} %>
+
+                  </div>    
+                <% end %>
+                <% end %>
+
+            </div>  
+        </div>
+    </div>
+
+    <div id="portfolio-footer">
+        <%=link_to("<< return to list", :action=>"show_portfolios") %>
+
+    </div>
+
+</div>

@@ -1,0 +1,64 @@
+<div id="attr-pages" class="hidden-item">
+  <div id="full-screen">false</div>
+  <div id="admin-active"><%=  @admin_active=admin_active() || "" %></div>
+  <div id="page_number"><%=@the_page%></div>
+</div>
+
+<div id="custom-list">
+  <% if @customs.count > 0 then %>
+    <div id="custom-block">
+      <%  @customs.each_with_index do |custom, counter|  %>
+
+        <% if @admin_active=="false" then %>
+          <%  if(counter % 3) == 0 %>
+            <%  if counter  > 1 %>
+            </div>
+          <% end %>  
+          <div class="custom-row">
+          <% end %>  
+        <% end %>  
+
+
+        <div class="custom-item <%=@admin_active=="true" ? " admin" : "" %> " id="field_<%=custom.id%>">
+          <%=  menu_edit_div(custom)%>
+
+          <div id="item-id" class="hidden-item">
+            <%=custom.id%>
+            <%=link_to(custom.name.to_s.html_safe, {:action=>:show_artifact_custom_group, :id=>custom.id, :category_id=>custom.name, :department_id=>@menu.name, :category_children=>true}, :class=>"custom-detail-link") %>
+
+          </div>
+          <div class="custom-picture">
+            <div class="custom-float">
+              <%= image_tag(Artifact.tagged_with(custom.name, :on=>:category).includes(:pictures).where(:pictures=>{:title=>"Custom"}).first.pictures.where(:title=>"Custom")[0].blank? ? "empty_s.jpg" : 
+                Artifact.tagged_with(custom.name, :on=>:category).includes(:pictures).where(:pictures=>{:title=>"Custom"}).first.pictures.where(:title=>"Custom")[0].image_url(:large).to_s,:class=>"custom-image") rescue image_tag("empty_s.jpg") %>
+            </div>
+          </div>
+          <div class="custom-name">
+            <%=custom.name%>
+          </div>
+        
+          <% if @admin_active=="true" then %>
+            <%= image_tag("/images/interface/handle.png",:class=>"handle") %>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+  <div class="pagination-div hidden-item">  
+    <div class="custom-counts hidden-item" >
+      Showing <%=@custom_first%> to <%=@custom_last%> of <%=@custom_count%>
+    </div>
+    <%=paginate @customs%>
+  </div>
+
+<%else%>
+  </br>
+  </br>
+  </br>
+  <center>
+    NO ARTIFACTS FOUND IN CATEGORY !
+  </center>
+<%end%>
+
+

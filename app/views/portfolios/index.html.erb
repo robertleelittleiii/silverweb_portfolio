@@ -1,0 +1,30 @@
+<div class="hidden-item">
+    <div id="as_window"><%=params[:request_type]=="window"%></div>
+    <div id="dialog-height">650</div>
+    <div id="dialog-width">1050</div>
+    <div id="dialog-name">List Portfolios</div>
+</div>
+
+
+<%#=portfolio_attr_display(nil,"true") %>
+<div class="myaccountblock">
+  <div align="center">
+    <!-- START:flash -->
+    <% if flash[:notice] -%>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end -%>
+    <!-- END:flash -->
+  </div>
+<div class="cms-block">
+
+  <div id="site-pref-list">
+
+    <%= link_to 'New Portfolio',{ :action=>:create_empty_record,:typeofrecord=>"Portfolio"}, :class=>"button-link",:id=>"new-portfolio", :remote=>true%>
+    <p>
+      </br>
+      </br>
+    </p>
+<%=render(:partial=>"portfolio_data_table") %>
+
+  </div>
+</div>

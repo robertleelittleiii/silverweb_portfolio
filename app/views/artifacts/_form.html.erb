@@ -1,0 +1,70 @@
+<div class="hidden-item" id="artifact-id"><%= @artifact.id %></div>
+
+<p>
+    <b>Active:</b><br>
+    <%=editablecheckboxedit("artifact_active", @artifact, "Active?")%>
+</p>
+
+<p>
+    <b>Name:</b><br>
+    <%=editablefieldcreate("name", @artifact)%>
+</p>
+
+<p> 
+    <b>Tags:(comma separated list)</b></br>
+        <%=editablefieldcreate("tag_list", @artifact)%>
+</p>
+
+<p>
+    <b>Description:</b><br>
+    
+<%#= text_area_tag :body, @artifact.body, :id => "page[body]", :class => "tinymce", :rows => 40, :cols => 120 %>
+
+            <%=form_for(@artifact, :remote=>true, :id=>"artifact-description", :format=>:json) do |f| %>
+              <%= f.submit "Update", :class=>"hidden-item"%><br>
+
+              <center>
+                  <%= f.text_area :description, :class => "tinymce-artifact" , :rows => "80", :cols => "120" %>
+                  <%= tinymce_settings(:default,"tinymce_config_artifact",{mode: "exact", selector: "textarea.tinymce-artifact", save_onsavecallback: "myartifactsave", height: "375", width: "950", init_instance_callback: "tinyMcePostInit"})%>   
+             <%#= tinymce :default, mode: "exact", selector: "textarea.tinymce-page" ,save_onsavecallback: "mysave", height: "375", width: "950", init_instance_callback: "tinyMcePostInit"%>
+              </center>
+              <br>
+            <% end %>
+            <div class="hidden-item">
+                <%= form_for Picture.new, :html => {:multipart => true, id: "picture-paste-artifact"} do |f| %>
+                  <span class="btn btn-success fileinput-button">
+                      <i class="glyphicon glyphicon-plus"></i>
+                      <span><%=image_tag("interface/browse.png", :id=>"file-button") %> </span>
+                      <!-- The file input field used as target for the file upload widget -->
+                      <%= f.file_field :image, :multiple=>true , :name=>"picture[image]" %>
+                  </span>
+                <% end %>
+            </div>
+            <script id="template-upload" type="text/x-tmpl">
+                <div class="upload">
+                {%=o.name%}
+                <div class="progress"><div class="bar" style="width: 0%"></div></div>
+                </div>
+            </script>
+    
+    
+    
+    
+    <%# form_for(@artifact, :remote=>true) do |f| %>
+  <%#= f.submit "Update"%><br>
+
+  <%#*<center>%>
+      <%#= f.text_area :description, :class => "mceEditor"%>
+  <%#*</center>%>
+  <%#*<br>%>
+<%# end %>
+</p>
+
+
+
+<%#*<p>%>
+<%#*<b>description:</b><br>%>
+<%#=editablefieldcreate("description", @artifact)%>
+<%#*</p>%>
+
+

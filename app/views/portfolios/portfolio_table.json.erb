@@ -1,0 +1,13 @@
+{"sEcho": <%= params[:sEcho] || -1 %>,
+ "iTotalRecords": <%= @total_objects %>,
+ "iTotalDisplayRecords": <%= @total_objects %>,
+ "aaData":[
+<% @objects.each do |portfolio| %>
+  [
+   "<%= portfolio.id%><div id='portfolio-id' class='hidden-item'><%= portfolio.id%></div> ",
+   "<%= portfolio.name %>",
+   "<%= raw(truncate(portfolio.description.to_s.gsub(/<\/?[^>]+>|(\r\n|\n|\r)|&nbsp;/, '').html_safe, :length => 17)) %>",
+   "<center><div class='delete-portfolio-item'><%=image_tag('interface/delete.png', :border=>'0').gsub("\"", "'").html_safe() %></div> </center>"
+  ] <% if @objects.last != portfolio then %> , <% end %>
+<% end %>
+]}

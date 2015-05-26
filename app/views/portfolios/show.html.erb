@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @portfolio.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @portfolio.description %>
+</p>
+
+<p>
+  <b>Meta description:</b>
+  <%= @portfolio.meta_description %>
+</p>
+
+<p>
+  <b>Meta keywords:</b>
+  <%= @portfolio.meta_keywords %>
+</p>
+
+<p>
+  <b>Meta robots:</b>
+  <%= @portfolio.meta_robots %>
+</p>
+
+
+<%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
+<%= link_to 'Back', portfolios_path %>

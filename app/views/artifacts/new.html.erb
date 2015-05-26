@@ -1,0 +1,37 @@
+<div class="myaccountblock" Align="Left">
+    <div align="center">
+    <!-- START:flash -->
+    <% if notice -%>
+      <div id="notice"><%= notice  %></div>
+    <% end -%>
+    <!-- END:flash -->
+    
+   <% if @artifact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@artifact.errors.count, "error") %> prohibited this artifact from being saved:</h2>
+
+      <ul>
+      <% @artifact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </div>
+
+  <div class="myaccountheader">New Room</div>
+  <div class="myaccountsection">
+    <div class="myaccountheading">Information for artifact</div>
+    <div class="myaccountcontent">
+
+      <%= render 'form' %>
+
+         </div>
+    </p>
+  </div>
+  
+<%= link_to 'Show', @artifact %> |
+<%= link_to 'Back', artifacts_path %>
+   
+
+</div>

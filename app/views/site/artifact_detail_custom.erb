@@ -1,0 +1,47 @@
+<div id="attr-pages" class="hidden-item">
+  <div id="full-screen">true</div>
+  <div id="admin-active"><%=@admin_active=admin_active() || "" %></div>
+  <div id="slider-effect">slide</div>
+  <div id="play_speed">0</div>
+  <div id="slider-width">600</div>
+  <div id="slider-height">617</div>
+  <div id="slider-nav">true</div>
+  <div id="slider-width"></div>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54dd208a60cb2699" async="async"></script>
+
+  
+</div>
+
+<%=artifact_edit_div(@artifact) %>
+
+<div id="artifact-content-block">
+    <div id="artifact-title">
+<%= @artifact.name.to_s.html_safe %></br>
+<%= @artifact.portfolio.location.to_s.html_safe %>
+
+          
+    </div>
+    <div id="artifact-description">
+                <%= @artifact.description.html_safe %>
+
+    </div>
+    <div id="artifact-keywords">
+        <%= @artifact.tag_list.to_s.split(",").join("</br>").html_safe %>
+    </div>
+    <div id="artifact-sharethis">
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div>SHARE</div>   <div class="addthis_sharing_toolbox">
+          
+        </div>
+
+    </div>
+</div>
+
+<div id="page-slider-gallary-page">
+      <%=  build_slider_gallary_v3(@artifact,"",:artifact_custom_slider) %>
+ </div>
+<div id="portfolio-footer">
+         <%=link_to("<< return", request.env['HTTP_REFERER']) %>
+
+  </div>

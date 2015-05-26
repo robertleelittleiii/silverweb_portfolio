@@ -1,4 +1,7 @@
-require "silverweb_portfolio/engine"
 
 module SilverwebPortfolio
+  puts "Loading SilverwebPortfolio..."
+  require "silverweb_portfolio/engine"
+  require "silverweb_portfolio/controller_extensions"
+  require "silverweb_portfolio/raility"
 end

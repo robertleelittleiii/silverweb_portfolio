@@ -1,0 +1,27 @@
+/* 
+    Document   : portfolios
+    Created on : Apr 23, 2014, 4:10:52 PM
+    Author     : rlittle
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+@import "tables.css"; 
+
+root { 
+    display: block;
+}
+
+
+#portfolio-table > tbody > tr.portfolio-row {
+cursor: pointer;
+}
+
+#artifacts-table > tbody > tr.artifact-row {
+cursor: pointer;
+}
+
+table#artifacts-table {
+  width: 100% !important;
+  padding-top: 10px;
+}

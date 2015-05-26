@@ -1,0 +1,147 @@
+<div class="hidden-item">
+    <div id="as_window"><%=params[:request_type]=="window"%></div>
+    <div id="dialog-height">650</div>
+    <div id="dialog-width">1050</div>
+    <div id="dialog-name">Edit Portfolio <%=@portfolio.id.to_s %> </div>
+</div>
+
+<%=  portfolio_info(@portfolio) %>
+<%= tinymce_assets %>
+
+
+<div align="center">
+    <!-- START:flash -->
+    <% if notice -%>
+      <div id="notice"><%= notice  %></div>
+    <% end -%>
+    <!-- END:flash -->
+
+    <% if @portfolio.errors.any? %>
+      <div id="error_explanation">
+          <h2><%= pluralize(@portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
+
+          <ul>
+              <% @portfolio.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+          </ul>
+      </div>
+    <% end %>
+
+</div>
+
+
+<div id="portfolio-tabs">
+    <ul>
+        <li><a href="#information-tab">Information</a></li>
+        <li><a href="#description-tab">Description</a></li>
+        <li><a href="#artifacts-tab">Artifacts</a></li>
+    </ul>
+    <div id="information-tab">
+        <div class="cms-content">
+
+
+            <p>
+                <b>Active:</b><br>
+                <%=editablecheckboxedit("portfolio_active", @portfolio, "Active?")%>
+            </p>
+
+            <p>
+                <b>Name:</b><br>
+                <%=editablefieldcreate("name", @portfolio)%>
+            </p>
+
+            <p>
+                <b>Location:</b><br>
+                <%=editablefieldcreate("location", @portfolio)%>
+            </p>
+
+
+
+<%#*<p>%>
+<%#*<b>description:</b><br>%>
+<%#=editablefieldcreate("description", @portfolio)%>
+<%#*</p>%>
+
+            <p>
+                <b>Meta Description:</b><br>
+                <%=editablefieldcreate("meta_description", @portfolio)%>
+            </p>
+
+
+
+            <p>
+                <b>Meta Keywords:</b><br>
+                <%=editablefieldcreate("meta_keywords", @portfolio)%>
+            </p>
+
+
+
+            <p>
+                <b>Meta Robots:</b><br>
+                <%=editablefieldcreate("meta_robots", @portfolio)%>
+            </p>
+
+
+        </div>
+        </p>
+    </div>
+    <div id="description-tab">
+        <div class="cms-content">
+            <b>Description:</b><br>
+
+            <%=form_for(@portfolio, :remote=>true, :id=>"portfolio-description", :format=>:json) do |f| %>
+              <%= f.submit "Update", :class=>"hidden-item"%><br>
+
+              <center>
+                  <%= f.text_area :description, :class => "tinymce-portfolio" , :rows => "80", :cols => "120" %>
+                  <%= tinymce_settings(:default,"tinymce_config_portfolio",{mode: "exact", selector: "textarea.tinymce-portfolio", save_onsavecallback: "myportfoliosave", height: "375", width: "950", init_instance_callback: "tinyMcePostInit"})%>   
+  <%#= tinymce :default, mode: "exact", selector: "textarea.tinymce-page" ,save_onsavecallback: "mysave", height: "375", width: "950", init_instance_callback: "tinyMcePostInit"%>
+              </center>
+              <br>
+            <% end %>
+            <div class="hidden-item">
+                <%= form_for Picture.new, :html => {:multipart => true, id: "picture-paste-portfolio"} do |f| %>
+                  <span class="btn btn-success fileinput-button">
+                      <i class="glyphicon glyphicon-plus"></i>
+                      <span><%=image_tag("interface/browse.png", :id=>"file-button") %> </span>
+                      <!-- The file input field used as target for the file upload widget -->
+                      <%= f.file_field :image, :multiple=>true , :name=>"picture[image]" %>
+                  </span>
+                <% end %>
+            </div>
+            <script id="template-upload" type="text/x-tmpl">
+                <div class="upload">
+                {%=o.name%}
+                <div class="progress"><div class="bar" style="width: 0%"></div></div>
+                </div>
+            </script>
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <div id="artifacts-tab">
+        <div class="cms-content">
+   
+            <div id="portfolio-inventory">
+                <div style="padding-bottom: 20px;">
+                    <%=image_tag("interface/ajax-loader2.gif", :id=>"loader_progress" ,:style=>"display:none")%></br> 
+                    <%= link_to('New',{ :action=>:create_empty_record, :controller=>:artifacts, :typeofrecord=>"artifact", :portfolio_id=>@portfolio.id, :request_type=>"nothing"}, :id=>"new-artifact-item", :remote => true ,  :class=>"button-link" )%>
+                </div>        
+                <div id="artifacts-list">
+                    <%=render :partial=>"artifact_list"%>
+                </div>
+            </div>
+        </div>
+
+
+    
+
+    </div>
+</div>
+

@@ -76,7 +76,11 @@ width: 405px;
 }
 
 div#portfolio-block {
-min-height: 600px;
+  min-height: 600px;
+  width: 912px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
 }
 
 div#portfolio-name {
@@ -166,5 +170,4 @@ div.hover-div {
 img.handle:hover + div.hover-div {
         display: block;
 }
-
 

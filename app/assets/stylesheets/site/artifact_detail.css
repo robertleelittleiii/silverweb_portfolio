@@ -120,3 +120,15 @@ div#portfolio-footer a:hover {
 color: darkgrey;
 text-decoration: underline;
 }
+
+div#content {
+  height: 670px;
+}
+
+div.artifact-detail {
+  width: 912px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  position: relative;
+}

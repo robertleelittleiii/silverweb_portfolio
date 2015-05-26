@@ -66,6 +66,9 @@ function portfolioeditClickBinding(selector) {
                 require("portfolios/edit.js");
                 requireCss("portfolios/edit.css");
                 requireCss("portfolios.css");
+                
+                requireCss("tables.css");
+
                 portfolios_edit_callDocumentReady();
                 portfolio_edit_dialog.dialog('open');
             }

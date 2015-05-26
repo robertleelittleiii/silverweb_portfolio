@@ -19,7 +19,7 @@
 #edit-portfolios, #edit-artifacts {
   margin-top: 0px;
   position: absolute;
-  z-index: 100;
+  z-index: 99;
   margin-left: 0px;
   cursor:pointer;
 }

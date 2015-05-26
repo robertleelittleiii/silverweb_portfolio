@@ -135,6 +135,8 @@ function site_show_portfolios() {
             enablePortfolioEdit();
             enableArtifactEdit();
             enableSliderEdit();
+            bindClickToPortfolioItem();
+
         }
     });
 

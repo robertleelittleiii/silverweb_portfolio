@@ -54,7 +54,12 @@
         <%=editablefieldcreate("tag_list", @artifact)%>
 </p>
 
+ <p>
+                <b>Template:(leave blank for default)</b><br>
+                <%=ajax_select("artifact_action_viewer","artifact",@artifact, @action_viewers, "Choose Viewer...")%><br><br>
 
+            </p>
+            
   <div id="artifact-classification">
   <fieldset class="address-legend" >
     <legend class="address-lable">Classification</legend>

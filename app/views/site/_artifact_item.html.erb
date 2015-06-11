@@ -3,7 +3,7 @@
  <% artifact = @artifact if artifact.blank? %>                
                       <%=artifact_edit_div(artifact)%>
 
-                      <%=link_to((image_tag(artifact.pictures.visible.first.blank? ? "empty.jpg" : artifact.pictures.visible.first.image_url(:artifact_list).to_s, :class=>"portfolio-thumb") rescue image_tag("empty.jpg")), {:action=>:artifact_detail, :id=>artifact.id}, :class=>"portfolio-thumb-item") rescue ""%>
+                      <%=link_to((image_tag(artifact.pictures.visible.first.blank? ? "empty.jpg" : artifact.pictures.visible.first.image_url(:artifact_list).to_s, :class=>"portfolio-thumb") rescue image_tag("empty.jpg")), {:action=>artifact.action_viewer, :id=>artifact.id}, :class=>"portfolio-thumb-item") rescue ""%>
 
                       <div class="artifact-name">
                           <%=artifact.name %>

@@ -113,15 +113,15 @@ div#close-before-picture {
 }
 
 div#portfolio-footer {
-    bottom: 0px;
-    position: absolute;
-    width: 885px;
-    text-align: right;
-    text-transform: uppercase;
-    color: black;
-    font-family: open_sansbold;
-    padding-bottom: 10px;
-}
+  bottom: 0px;
+  position: absolute;
+  text-align: right;
+  text-transform: uppercase;
+  color: black;
+  font-family: open_sansbold;
+  padding-bottom: 10px;
+  right: 40px;
+}   
 
 div#portfolio-footer a {
     color: black;
@@ -159,9 +159,9 @@ div#artifact-description {
 }
 
 div#artifact-sharethis {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
 }
 
 div#artifact-sharethis div {

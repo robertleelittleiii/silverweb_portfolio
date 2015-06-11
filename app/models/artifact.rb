@@ -6,5 +6,10 @@ class Artifact < ActiveRecord::Base
   
   acts_as_taggable_on :category, :department
 
+  def action_viewer
+    
+    return (artifact_action_viewer.blank? ? "artifact_detail" : artifact_action_viewer) rescue "artifact_detail"
+    
+  end
   
 end

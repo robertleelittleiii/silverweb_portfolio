@@ -2,6 +2,7 @@ class ArtifactsController < ApplicationController
 
  #  uses_tiny_mce(:options => AppConfig.full_mce_options, :only => [:new, :edit])
 
+  ACTION_VIEWERS = [["Image Slider","artifact_detail"],["Informatoin Page","artifact_detail_custom"]]
 
   # GET /artifacts
   # GET /artifacts.json
@@ -43,6 +44,8 @@ class ArtifactsController < ApplicationController
       render nothing: true
     else
     @artifact = Artifact.find(params[:id])
+    @action_viewers = ACTION_VIEWERS
+
     end
     
     @image_locations = ["Slider", "Primary","Cover", "Before", "Custom", "-"]  
@@ -102,6 +105,7 @@ class ArtifactsController < ApplicationController
     @artifact.name = "New Item"
     @artifact.description = "Enter Description Here."
     @artifact.position = 99
+    @artifact.artifact_action_viewer = "artifact_detail"
     @artifact.artifact_active = true
     @artifact.save
     
@@ -325,7 +329,7 @@ class ArtifactsController < ApplicationController
   end
   
   def artifact_params
-  params[:artifact].permit("name", "description", "portfolio_id", "created_at", "updated_at", "position", "artifact_active", "tag_list")
+  params[:artifact].permit("name", "description", "portfolio_id", "created_at", "updated_at", "position", "artifact_active", "tag_list", "artifact_action_viewer")
 end
   
 end

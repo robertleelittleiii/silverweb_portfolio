@@ -22,6 +22,7 @@ div.edit-artifact {
 
 div#page-slider-gallary-page {
     top: initial;
+    height:500px;
 }
 
 #page-content {
@@ -135,12 +136,14 @@ div#portfolio-footer a:hover {
 
 
 div#artifact-content-block {
-    position: relative;
-    width: 230px;
-    border: black;
-    float: left;
-    height: 600px;
-}   
+  position: relative;
+  width: 250px;
+  border: black;
+  float: left;
+  height: 600px;
+  padding-left: 50px;
+  padding-top: 10px;
+}
 
 div#artifact-title {
     text-align: center;
@@ -187,9 +190,9 @@ div a.at-share-btn:hover {
 }
 
 #slides3 {
-    position: relative;
-    top: -1px;
-    left: 0px;
-    z-index: 100;
-    width: 600px;
+  position: relative;
+  top: 50px;
+  left: 0px;
+  z-index: 100;
+  width: 600px;
 }

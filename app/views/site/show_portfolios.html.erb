@@ -13,9 +13,14 @@
           <%  if(counter % 3) == 0 %>
             <%  if counter  > 1 %>
             </div>
-          <% end %>  
+            <% end %>  
+      
           <div class="portfolio-row">
-          <% end %>  
+          <% else %>
+          <% end %>
+              
+        <% else %>   
+      
         <% end %>  
 
 
@@ -46,6 +51,7 @@
 
     </div>
   </div>
+</div>
   <div class="pagination-div">  
     <div class="portfolio-counts">
       Showing <%=@portfolio_first%> to <%=@portfolio_last%> of <%=@portfolio_count%>

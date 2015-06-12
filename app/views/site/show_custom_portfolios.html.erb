@@ -4,8 +4,8 @@
   <div id="page_number"><%=@the_page%></div>
 </div>
 
-<div id="custom-list">
   <% if @customs.count > 0 then %>
+<div id="custom-list">
     <div id="custom-block">
       <%  @customs.each_with_index do |custom, counter|  %>
 

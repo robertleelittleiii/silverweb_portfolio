@@ -358,13 +358,14 @@ module SilverwebPortfolio
   
         def artifact_detail
 
+         
           session[:mainnav_status] = false
           if params[:id].blank? then
             @artifact = Artifact.first
           else
             @artifact = Artifact.find(params[:id]) 
           end
-    
+                    
           if params[:next] then
             @artifact = @artifact.next_in_collection
             puts "=======NEXT========"
@@ -388,8 +389,14 @@ module SilverwebPortfolio
 
     
           respond_to do |format|
-            format.html { render :action=>@page_template} # show.html.erb
-            format.xml  { render :xml => @page }
+            if @artifact.action_viewer != "artifact_detail" then
+              redirect_to :action => @artifact.action_viewer, :params=>params 
+              return
+            else
+              format.html { render :action=>@page_template} # show.html.erb
+              format.xml  { render :xml => @page }
+            end
+          
           end
     
         end

@@ -34,7 +34,7 @@
                 </div>
                 <div class="portfolio-picture">
                     <div class="portfolio-float">
-                        <%= image_tag(portfolio.artifacts.where(:artifact_active=>true).order(:position).first.pictures.where(:active_flag=>true).where(:title=>"Cover")[0].blank? ? "empty_s.jpg" : portfolio.artifacts.order(:position)[0].pictures.where(:active_flag=>true).where(:title=>"Cover")[0].image_url(:large).to_s,:class=>"portfolio-image") rescue image_tag("empty_s.jpg") %>
+                        <%= image_tag(portfolio.artifacts.where(:artifact_active=>true).order(:position).first.pictures.where(:title=>"Cover")[0].blank? ? "empty_s.jpg" : portfolio.artifacts.order(:position)[0].pictures.where(:title=>"Cover")[0].image_url(:large).to_s,:class=>"portfolio-image") rescue image_tag("empty_s.jpg") %>
                     </div>
                 </div>
                 <div class="portfolio-name">

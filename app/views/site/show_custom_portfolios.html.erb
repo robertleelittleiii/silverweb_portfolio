@@ -51,8 +51,10 @@
     </div>
     <%=paginate @customs%>
   </div>
-</div>
-
+<% if @admin_active=="false" then %>
+    </div>
+  <% end %>
+    
 <%else%>
   </br>
   </br>

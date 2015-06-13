@@ -1,62 +1,64 @@
 <div id="attr-pages" class="hidden-item">
-  <div id="full-screen">false</div>
-  <div id="admin-active"><%=  @admin_active=admin_active() || "" %></div>
-  <div id="page_number"><%=@the_page%></div>
+    <div id="full-screen">false</div>
+    <div id="admin-active"><%=  @admin_active=admin_active() || "" %></div>
+    <div id="page_number"><%=@the_page%></div>
 </div>
 
-  <% if @portfolios.count > 0 then %>
+<% if @portfolios.count > 0 then %>
   <div id="portfolio-list">
-    <div id="portfolio-block">
-      <%  @portfolios.each_with_index do |portfolio, counter|  %>
+      <div id="portfolio-block">
+          <%  @portfolios.each_with_index do |portfolio, counter|  %>
 
-        <% if @admin_active=="false" then %>
-          <%  if(counter % 3) == 0 %>
-            <%  if counter  > 1 %>
-            </div>
+            <% if @admin_active=="false" then %>
+              <%  if(counter % 3) == 0 %>
+                <%  if counter  > 1 %>
+              </div>
             <% end %>  
-      
-          <div class="portfolio-row">
-          <% else %>
-          <% end %>
-              
-        <% else %>   
-      
-        <% end %>  
+
+            <div class="portfolio-row">
+              <% else %>
+              <% end %>
+
+            <% else %>   
+
+            <% end %>  
 
 
-        <div class="portfolio-item <%=@admin_active=="true" ? " admin" : "" %> " id="portfolio_<%=portfolio.id%>">
-          <%=  portfolio_edit_div(portfolio)%>
+            <div class="portfolio-item <%=@admin_active=="true" ? " admin" : "" %> " id="portfolio_<%=portfolio.id%>">
+                <%=  portfolio_edit_div(portfolio)%>
 
-          <div id="item-id" class="hidden-item">
-            <%=portfolio.id%>
-            <%=link_to(portfolio.name.to_s.html_safe, {:action=>:portfolio_detail, :id=>portfolio.id}, :class=>"portfolio-detail-link") %>
+                <div id="item-id" class="hidden-item">
+                    <%=portfolio.id%>
+                    <%=link_to(portfolio.name.to_s.html_safe, {:action=>:portfolio_detail, :id=>portfolio.id}, :class=>"portfolio-detail-link") %>
 
-          </div>
-          <div class="portfolio-picture">
-            <div class="portfolio-float">
-              <%= image_tag(portfolio.artifacts.where(:artifact_active=>true).order(:position).first.pictures.where(:active_flag=>true).where(:title=>"Cover")[0].blank? ? "empty_s.jpg" : portfolio.artifacts.order(:position)[0].pictures.where(:active_flag=>true).where(:title=>"Cover")[0].image_url(:large).to_s,:class=>"portfolio-image") rescue image_tag("empty_s.jpg") %>
+                </div>
+                <div class="portfolio-picture">
+                    <div class="portfolio-float">
+                        <%= image_tag(portfolio.artifacts.where(:artifact_active=>true).order(:position).first.pictures.where(:active_flag=>true).where(:title=>"Cover")[0].blank? ? "empty_s.jpg" : portfolio.artifacts.order(:position)[0].pictures.where(:active_flag=>true).where(:title=>"Cover")[0].image_url(:large).to_s,:class=>"portfolio-image") rescue image_tag("empty_s.jpg") %>
+                    </div>
+                </div>
+                <div class="portfolio-name">
+                    <%=portfolio.name%>
+                </div>
+                <div class="portfolio-location">
+                    <%=portfolio.location%>
+                </div>
+                <% if @admin_active=="true" then %>
+                  <%= image_tag("interface/handle.png",:class=>"handle") %>
+                <% end %>
             </div>
-          </div>
-          <div class="portfolio-name">
-            <%=portfolio.name%>
-          </div>
-          <div class="portfolio-location">
-            <%=portfolio.location%>
-          </div>
-          <% if @admin_active=="true" then %>
-            <%= image_tag("interface/handle.png",:class=>"handle") %>
           <% end %>
-        </div>
-      <% end %>
 
-    </div>
+      </div>
   </div>
-</div>
-  <div class="pagination-div">  
-    <div class="portfolio-counts">
-      Showing <%=@portfolio_first%> to <%=@portfolio_last%> of <%=@portfolio_count%>
+  <% if @admin_active=="false" then %>
     </div>
-    <%=paginate @portfolios%>
+  <% end %>
+  <div class="pagination-div">  
+      <div class="portfolio-counts">
+          Showing <%=@portfolio_first%> to <%=@portfolio_last%> of <%=@portfolio_count%>
+      </div>
+      <%=paginate @portfolios%>
   </div>
 
 <%else%>
@@ -64,7 +66,7 @@
   </br>
   </br>
   <center>
-    NO PORTFOLIOS FOUND IN CATEGORY !
+      NO PORTFOLIOS FOUND IN CATEGORY !
   </center>
 <%end%>
 

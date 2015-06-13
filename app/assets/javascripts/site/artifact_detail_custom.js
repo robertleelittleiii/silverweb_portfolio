@@ -5,10 +5,7 @@
 
 
 $(document).ready(function() {
-    bindClickToShowBefore();
-    bindClickToHideBefore();
-    activate_slides();
-
+initialize_artifact_detail_custom();
 //
 //    slideshow_width = parseInt($("#slider-width").text().trim());
 //    slideshow_height = parseInt($("#slider-height").text().trim());
@@ -107,7 +104,14 @@ $(document).ready(function() {
 
 });
 
+function initialize_artifact_detail_custom()
+{
+    
+    bindClickToShowBefore();
+    bindClickToHideBefore();
+    activate_slides();
 
+}
 function bindClickToShowBefore() {
     $('div#image-before-button').click(function() {
         console.log(this);

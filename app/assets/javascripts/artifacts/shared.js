@@ -119,6 +119,9 @@ function show_artifact(artifact_id) {
             }
             enableArtifactEdit();
             enableSliderEdit();
+            if (typeof (initialize_artifact_detail_custom) != "undefined") {
+                initialize_artifact_detail_custom();
+            }
         }
     }); 
     }

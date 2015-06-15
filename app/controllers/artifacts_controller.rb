@@ -308,7 +308,7 @@ class ArtifactsController < ApplicationController
     
 
   def total_objects(params={})
-    @total_objects = Artifact.count
+    @total_objects = Artifact.where(portfolio_id: params[:portfolio_id]).where(conditions).count()
   end
 
   def datatable_columns(column_id)

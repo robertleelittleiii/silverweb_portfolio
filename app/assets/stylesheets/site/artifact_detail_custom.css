@@ -196,3 +196,27 @@ div a.at-share-btn:hover {
   z-index: 75;
   width: 600px;
 }
+
+div.next_artifact {
+  text-align: right;
+  display: inline-block;
+  float: right;
+  padding-right: 55px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+div.previos_artifact {
+  text-align: left;
+  display: inline-block;
+  float: left;
+  padding-left: 55px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+div.artifact-pagination {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}

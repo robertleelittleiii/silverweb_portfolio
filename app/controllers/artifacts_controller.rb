@@ -2,7 +2,7 @@ class ArtifactsController < ApplicationController
 
  #  uses_tiny_mce(:options => AppConfig.full_mce_options, :only => [:new, :edit])
 
-  ACTION_VIEWERS = [["Image Slider","artifact_detail"],["Informatoin Page","artifact_detail_custom"]]
+  ACTION_VIEWERS = [["Image Slider","artifact_detail"],["Information Page","artifact_detail_custom"]]
 
   # GET /artifacts
   # GET /artifacts.json

@@ -10,16 +10,21 @@
         <div id="slider-width"></div>
 
     </div>
-<div class="artifact-detail">
 
-    <%=artifact_edit_div(@artifact) %>
+        <%=artifact_edit_div(@artifact) %>
+        <div class="artifact-pagination">
+            <div class="previos_artifact">
+                <%= link_to("Previous Page",{:controller=>:site, :action=>"artifact_detail", :prev=>true, :id=>@artifact} ) %>  
+            </div>
+            <div  class="next_artifact">
+                <%= link_to("Next Page",{:controller=>:site, :action=>"artifact_detail", :next=>true, :id=>@artifact}) %>
+            </div>
+        </div>
+        <div id="page-slider-gallary-page">
+            <%=build_slider_gallary_v3(@artifact) %>
+        </div>
+        <div id="portfolio-footer">
+            <%=link_to("<< return", request.env['HTTP_REFERER']) %>
 
-    <div id="page-slider-gallary-page">
-        <%=build_slider_gallary_v3(@artifact) %>
-    </div>
-    <div id="portfolio-footer">
-        <%=link_to("<< return", request.env['HTTP_REFERER']) %>
-
-    </div>
-</div>
+        </div>
 </div>

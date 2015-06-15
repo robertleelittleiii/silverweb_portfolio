@@ -134,3 +134,21 @@ div.artifact-detail {
   height: 100%;
 
 }
+
+div.next_artifact {
+  text-align: right;
+  display: inline-block;
+  float: right;
+}
+
+div.previos_artifact {
+  text-align: left;
+  display: inline-block;
+  float: left;
+}
+
+div.artifact-pagination {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}

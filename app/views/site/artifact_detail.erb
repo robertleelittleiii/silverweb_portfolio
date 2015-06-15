@@ -20,6 +20,7 @@
                 <%= link_to("Next Page",{:controller=>:site, :action=>"artifact_detail", :next=>true, :id=>@artifact}) %>
             </div>
         </div>
+<div id="artifact-content-block">
         <div id="page-slider-gallary-page">
             <%=build_slider_gallary_v3(@artifact) %>
         </div>
@@ -27,4 +28,6 @@
             <%=link_to("<< return", request.env['HTTP_REFERER']) %>
 
         </div>
+</div>
+    
 </div>

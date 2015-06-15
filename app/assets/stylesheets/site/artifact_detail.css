@@ -122,7 +122,7 @@ text-decoration: underline;
 }
 
 div#content {
-  height: 670px;
+  height: 685px;
 }
 
 div.artifact-detail {
@@ -151,4 +151,11 @@ div.artifact-pagination {
   display: inline-block;
   position: relative;
   width: 100%;
+}
+
+div#artifact-content-block {
+  display: inline-block;
+  position: relative;
+  margin-top: 10px;
+  height: 650px;
 }

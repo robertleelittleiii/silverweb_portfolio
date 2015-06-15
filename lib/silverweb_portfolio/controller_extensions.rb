@@ -367,12 +367,12 @@ module SilverwebPortfolio
           end
                     
           if params[:next] then
-            @artifact = @artifact.next_in_collection
+            @artifact = @artifact.next_in_portfolio
             puts "=======NEXT========"
           end
     
           if params[:prev] then
-            @artifact = @artifact.previous_in_collection
+            @artifact = @artifact.previous_in_portfolio
             puts "=======PREV======="
 
           end
@@ -411,12 +411,12 @@ module SilverwebPortfolio
           end
     
           if params[:next] then
-            @artifact = @artifact.next_in_collection
+            @artifact = @artifact.next_in_portfolio
             puts "=======NEXT========"
           end
     
           if params[:prev] then
-            @artifact = @artifact.previous_in_collection
+            @artifact = @artifact.previous_in_portfolio
             puts "=======PREV======="
 
           end

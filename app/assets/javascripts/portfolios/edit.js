@@ -114,16 +114,16 @@ function buildartifactsListTable() {
         "aoColumns":
                 [
                     {
-                        "sWidth": "5%"
+                        "sWidth": "40px"
                     },
                     {
-                        "sWidth": "45%"
+                        "sWidth": "250px"
                     },
                     {
-                        "sWidth": "45%"
+                        "sWidth": ""
                     },
                     {
-                        "sWidth": "5%"
+                        "sWidth": "10px"
                     }
                 ]
         ,

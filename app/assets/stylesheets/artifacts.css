@@ -165,3 +165,19 @@ div.picture-info {
   font-weight: bold;
   margin-top: -10px;
 }
+
+div.artifact-description, div.artifact-description p {
+  text-align: left;
+  padding: 0px;
+  margin: 0px;
+}
+
+div#field_name.myaccountcontentitem {
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 0px;
+  display: inline-block;
+  margin-bottom: 0px;
+  font-size: 12pt;
+  font-weight: normal;
+}

@@ -45,7 +45,7 @@ ul.slidesjs-pagination {
    width: 18px;
   height: 16px;
  display: block;
-    z-index: 101;
+    z-index: 76;
     background-repeat: no-repeat;
     bottom: -10px;
 }
@@ -58,7 +58,7 @@ ul.slidesjs-pagination {
    width: 18px;
   height: 16px;
  display: block;
-    z-index: 101;
+    z-index: 76;
     background-repeat: no-repeat;
     bottom: -10px;
 }
@@ -77,7 +77,7 @@ div#artifact-keywords {
 
 div#image-before-button {
     position: absolute;
-    z-index: 200;
+    z-index: 80;
     background-color: rgba(189, 189, 189, 0.7);
     color: black;
     text-transform: uppercase;
@@ -92,7 +92,7 @@ div#image-before-button {
 
 div#before-picture {
     position: absolute;
-    z-index: 201;
+    z-index: 81;
     top: 1px;
     background: lightgray;
     box-shadow: 0px 0px 20px black;
@@ -193,6 +193,6 @@ div a.at-share-btn:hover {
   position: relative;
   top: 50px;
   left: 0px;
-  z-index: 100;
+  z-index: 75;
   width: 600px;
 }

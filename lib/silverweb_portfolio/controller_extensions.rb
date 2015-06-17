@@ -102,7 +102,7 @@ module SilverwebPortfolio
         def show_portfolios
           session[:mainnav_status] = false
           session[:last_catetory] = request.env['REQUEST_URI']
-          @page_name=Menu.find(session[:parent_menu_id]).name || "Portfolios" rescue ""
+          @page_name=Menu.find(session[:parent_menu_id]).name || params[:category_id] rescue ""
     
           @portfolios_per_page = Settings.portfolios_per_page.to_i || 8
           @category_id = params[:category_id] || ""
@@ -114,14 +114,14 @@ module SilverwebPortfolio
           @menu = Menu.where(:name=>@category_id).first 
   
           if params[:top_menu] then
-            # puts("top_menu id: #{@menu.menus[0].name}")
+            #puts("top_menu id: #{@menu.menus[0].name}")
             session[:parent_menu_id] = @menu.id rescue 0
             @menu = @menu.menus[0] rescue Menu.new
             @category_id = @menu.name rescue "n/a"
 
           end
       
-          #@page_name=Menu.find(session[:parent_menu_id]).name rescue ""
+          @page_name= Menu.find(session[:parent_menu_id]).name rescue ""
           @portfolios_list = Portfolio.where(:portfolio_active=>true)
           # begin 
           #      if @category_children == "true" then

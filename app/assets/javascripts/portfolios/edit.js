@@ -482,7 +482,7 @@ function deleteArtifact(artifact_id)
     var answer = confirm('Are you sure you want to delete this?')
     if (answer) {
         $.ajax({
-            url: '/artifacts/delete_ajax/' + artifact_id,
+            url: '/artifacts/delete_ajax?id=' + artifact_id,
             success: function (data)
             {
                 setUpPurrNotifier("Notice", "Item Successfully Deleted.");

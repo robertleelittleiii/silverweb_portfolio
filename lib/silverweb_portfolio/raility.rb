@@ -14,11 +14,15 @@ module SilverwebPortfolio
     # The block you pass to this method will run for every request in
     # development mode, but only once in production.
     
-    
+ 
     initializer "silverweb_portfolio.update_picture_model" do      
     
         SilverwebCms::Config.add_nav_item({:name=>"Portfolio", :controller=>'portfolios', :action=>'index'})
-
+        
+        SilverwebCms::Config.add_menu_class(["Portfolio","menu_show_portfolios"])
+      #  SilverwebCms::Config.add_menu_class(["Show Artifact Group","menu_show_artifact_group"])
+      
+      #  SilverwebCms::Config.add_menu_actions(["Show Portfolio",20])
       
       Picture.class_eval do
         belongs_to :artifacts, :polymorphic => true
@@ -44,7 +48,13 @@ module SilverwebPortfolio
 
 
       end
+      
     end
+    
+#    initializer "silverweb_portfolio.update_menu_defs" do
+#      MenusController::MENU_TYPES << ["Portfolio",6]
+#      MenusController::ACTION_TYPES << ["Show Portfolio",20]
+#    end
     
     config.to_prepare do
       SiteController.send(:include, SilverwebPortfolio::ControllerExtensions::SiteControllerExtensions)

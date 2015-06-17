@@ -32,7 +32,7 @@ module SilverwebPortfolio
 
           @menu = Menu.where(:name=>@department_id).first 
     
-          puts("@menu.menus: #{@menu.menus.inspect}" )
+          puts("@menu.menus: #{@menu.menus.inspect rescue "none"}" )
 
           puts("----------- *********** ----------- ************")
 
@@ -73,9 +73,9 @@ module SilverwebPortfolio
 
           #puts("@artifact_ids --> #{@artifact_ids.inspect }")
     
-    
-          @customs_count = @menu.menus.length
-
+          
+          @customs_count = @menu.menus.length rescue 0
+          
           # @portfolios = Kaminari.paginate_array(@portfolios).page(params[:page]).per(@portfolios_per_page)
           # @artifacts = Artifact.where(:id=>@artifact_ids).order("position ASC").order("created_at DESC").page(params[:page]).per(@portfolios_per_page)
           @customs = @menu.menus.where(:menu_active=>true).order(:m_order).page(params[:page]).per(@customs_per_page)

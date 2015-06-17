@@ -20,7 +20,7 @@ module ArtifactsHelper
       if session[:user_id] then
         user=User.find(session[:user_id])
         if user.roles.detect{|role|((role.name=="Admin") | (role.name=="Site Owner"))} then
-          returnval = "<div id=\""+ (div_id=="" ? "edit-artifacts" : div_id) + "\" >"
+          returnval = "<div class='edit-artifacts' id=\""+ (div_id=="" ? "edit-artifacts" : div_id) + "\" >"
           returnval << "<div id='artifact-id' class='hidden-item'>#{artifact.id}</div>"
           returnval << image_tag("interface/edit.png",:border=>"0", :class=>"imagebutton", :title => "Edit this") # link_to(image_tag("interface/edit.png",:border=>"0", :class=>"imagebutton", :title => "Edit this Page"),:controller => 'artifacts', :id =>artifact.id ,  :action => 'edit')
           returnval << "</div>"

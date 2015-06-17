@@ -15,7 +15,7 @@
 $(document).ready(function () {
  enableArtifactEdit();
  enablePortfolioEdit();
- enableArtifactEdit();
+ enableMeusEdit();
  });
 
 
@@ -35,7 +35,7 @@ function enablePortfolioEdit() {
     }
 }
 
-function enableArtifactEdit() {
+function enableMeusEdit() {
     if ($("#edit-menu").length > 0)
     {
         requireCss("menus.css");

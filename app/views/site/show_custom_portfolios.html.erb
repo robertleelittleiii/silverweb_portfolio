@@ -4,7 +4,7 @@
   <div id="page_number"><%=@the_page%></div>
 </div>
 
-  <% if @customs.count > 0 then %>
+  <% if (!@customs.nil? and @customs.count > 0) then %>
 <div id="custom-list">
     <div id="custom-block">
       <%  @customs.each_with_index do |custom, counter|  %>
@@ -38,7 +38,7 @@
           </div>
         
           <% if @admin_active=="true" then %>
-            <%= image_tag("/images/interface/handle.png",:class=>"handle") %>
+            <%= image_tag("interface/handle.png",:class=>"handle") %>
           <% end %>
         </div>
       <% end %>

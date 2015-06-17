@@ -131,8 +131,11 @@ font-size: 13px;
 }
 
 div#custom-list {
-width: 1024px;
-margin-left: -13px;
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+  padding-top: 20px;
+  width: 912px;
 }
 
 div.custom-picture img {

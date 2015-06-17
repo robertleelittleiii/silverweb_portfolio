@@ -15,6 +15,7 @@
 $(document).ready(function () {
  enableArtifactEdit();
  enablePortfolioEdit();
+ enableArtifactEdit();
  });
 
 
@@ -31,5 +32,14 @@ function enablePortfolioEdit() {
     {
         require("portfolios/shared.js");
         portfolioeditClickBinding("div#edit-portfolios");
+    }
+}
+
+function enableArtifactEdit() {
+    if ($("#edit-menu").length > 0)
+    {
+        requireCss("menus.css");
+        require("menus/shared.js");
+        menueditClickBinding("div.edit-menu",true);
     }
 }

@@ -1,0 +1,65 @@
+<div id="attr-pages" class="hidden-item">
+  <div id="full-screen">false</div>
+  <div id="admin-active"><%=  @admin_active=admin_active() || "" %></div>
+  <div id="page_number"><%=@the_page%></div>
+</div>
+
+<div id="artifact-list">
+  <% if @artifacts.count > 0 then %>
+    <div id="artifact-block"> 
+      <%  @artifacts.each_with_index do |artifact, counter|  %>
+
+        <% if @admin_active=="false" then %>
+          <%  if(counter % 3) == 0 %>
+            <%  if counter  > 1 %>
+            </div>
+          <% end %>  
+          <div class="artifact-row">
+          <% end %>  
+        <% end %>  
+
+
+        <div class="artifact-item <%=@admin_active=="true" ? " admin" : "" %> " id="artifact_<%=artifact.id%>">
+          <%=  artifact_edit_div(artifact)%>
+
+          <div id="item-id" class="hidden-item">
+            <%=artifact.id%>
+            <%=link_to(artifact.name.to_s.html_safe, {:action=>:artifact_detail_custom, :id=>artifact.id}, :class=>"artifact-detail-link") %>
+
+          </div>
+          <div class="artifact-picture">
+            <div class="artifact-float">
+              <%= image_tag(artifact.pictures.where(:title=>"Cover")[0].blank? ? "empty_s.jpg" : artifact.pictures.where(:title=>"Cover")[0].image_url(:large).to_s,:class=>"artifact-image") rescue image_tag("empty_s.jpg") %>
+            </div>
+          </div>
+          <div class="artifact-name">
+            <%=artifact.name%>
+          </div>
+          <div class="artifact-location">
+            <%=artifact.portfolio.location rescue "unknown"%>
+          </div>
+          <% if @admin_active=="true" then %>
+            <%= image_tag("/images/interface/handle.png",:class=>"handle") %>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+  <div class="pagination-div">  
+    <div class="artifact-counts">
+      Showing <%=@artifact_first%> to <%=@artifact_last%> of <%=@artifact_count%>
+    </div>
+    <%=paginate @artifacts%>
+  </div>
+
+<%else%>
+  </br>
+  </br>
+  </br>
+  <center>
+    NO ARTIFACTS FOUND IN CATEGORY !
+  </center>
+<%end%>
+
+

@@ -17,8 +17,12 @@ function bindClickToArtifactItem () {
 
 $(document).ready(function(){
     // update left to correct height.
-    $("#page-middle-left").height($("#page-body").height() + parseInt($("#page-body").css("margin-top")))
+    // requireCss("menus.css");
+    // require("menus/shared.js");
 
+    // menueditClickBinding("div.edit-menu");
+ 
+    $("#page-middle-left").height($("#page-body").height() + parseInt($("#page-body").css("margin-top")))
 
     bindClickToArtifactItem();
     
@@ -30,21 +34,21 @@ $(document).ready(function(){
         $('#Content').css('background',"white")
 
     }
-    $('#slides').slides({
-        preload: true,
-        preloadImage: '/images/interface/loading.gif',
-        play: 5000,
-        pause: 2500,
-        slideSpeed: 1000,
-        efect: 'slide',
-        hoverPause: true,
-        next: 'next-slide',
-        prev: 'prev-slide'
-
-
-
-    });	
-                   
+//    $('#slides').slides({
+//        preload: true,
+//        preloadImage: '/images/interface/loading.gif',
+//        play: 5000,
+//        pause: 2500,
+//        slideSpeed: 1000,
+//        efect: 'slide',
+//        hoverPause: true,
+//        next: 'next-slide',
+//        prev: 'prev-slide'
+//
+//
+//
+//    });	
+               
     // resize the slider area and adjust the position of the prev next buttons.
     if ($(".slides_container").length > 0 ) 
     {
@@ -74,7 +78,7 @@ $(document).ready(function(){
 
 
     };
-    
+
     if ($("#admin-active").text() == "true") {
         // alert("Admin Active");
         setUpOrderChange();

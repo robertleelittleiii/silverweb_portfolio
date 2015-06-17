@@ -28,7 +28,7 @@ function enableArtifactEdit() {
 }
 
 function enablePortfolioEdit() {
-    if ($("#edit-portfolios").length > 0)
+    if ($("div.edit-portfolios").length > 0)
     {
         require("portfolios/shared.js");
         portfolioeditClickBinding("div#edit-portfolios");

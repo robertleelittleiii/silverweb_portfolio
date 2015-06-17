@@ -5,7 +5,7 @@ module PortfoliosHelper
     if session[:user_id] then
       user=User.find(session[:user_id])
        if user.roles.detect{|role|((role.name=="Admin") | (role.name=="Site Owner"))} then
-          returnval = "<div id=\""+ (div_id=="" ? "edit-portfolios" : div_id) + "\" >"
+          returnval = "<div class='edit-portfolios' id=\""+ (div_id=="" ? "edit-portfolios" : div_id) + "\" >"
           returnval << "<div id='portfolio-id' class='hidden-item'>#{portfolio.id}</div>"
           returnval << image_tag("interface/edit.png",:border=>"0", :class=>"imagebutton", :title => "Edit this Portfolio") # link_to(image_tag("interface/edit.png",:border=>"0", :class=>"imagebutton", :title => "Edit this Page"),:controller => 'portfolios', :id =>portfolio.id ,  :action => 'edit')
           returnval << "</div>"

@@ -129,7 +129,7 @@ div.artifact-detail {
   width: 912px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
+  /*margin-top: 20px;*/
   position: relative;
   height: 100%;
 
@@ -158,4 +158,22 @@ div#artifact-content-block {
   position: relative;
   margin-top: 10px;
   height: 650px;
+}
+
+div.next_artifact {
+  text-align: right;
+  display: inline-block;
+  float: right;
+  padding-right: 55px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+div.previos_artifact {
+  text-align: left;
+  display: inline-block;
+  float: left;
+  padding-left: 55px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

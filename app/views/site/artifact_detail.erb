@@ -1,3 +1,13 @@
+<%=artifact_edit_div(@artifact) %>
+<div class="artifact-pagination">
+            <div class="previos_artifact">
+                <%= link_to("< " + @artifact.previous_in_portfolio.name,{:controller=>:site, :action=>"artifact_detail", :prev=>true, :id=>@artifact} ) %>  
+            </div>
+            <div  class="next_artifact">
+                <%= link_to(@artifact.next_in_portfolio.name + " >",{:controller=>:site, :action=>"artifact_detail", :next=>true, :id=>@artifact}) %>
+            </div>
+        </div>
+
 <div class="artifact-detail">
     <div id="attr-pages" class="hidden-item">
         <div id="full-screen">true</div>
@@ -11,15 +21,7 @@
 
     </div>
 
-        <%=artifact_edit_div(@artifact) %>
-        <div class="artifact-pagination">
-            <div class="previos_artifact">
-                <%= link_to("< " + @artifact.previous_in_portfolio.name,{:controller=>:site, :action=>"artifact_detail", :prev=>true, :id=>@artifact} ) %>  
-            </div>
-            <div  class="next_artifact">
-                <%= link_to(@artifact.next_in_portfolio.name + " >",{:controller=>:site, :action=>"artifact_detail", :next=>true, :id=>@artifact}) %>
-            </div>
-        </div>
+        
 <div id="artifact-content-block">
         <div id="page-slider-gallary-page">
             <%=build_slider_gallary_v3(@artifact) %>

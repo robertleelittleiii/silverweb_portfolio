@@ -21,8 +21,8 @@ div.edit-artifact {
 }
 
 div#page-slider-gallary-page {
-    top: initial;
-    height:600px;
+  top: initial !important;
+  height: 500px;
 }
 
 #page-content {
@@ -191,7 +191,7 @@ div a.at-share-btn:hover {
 
 #slides3 {
   position: relative;
-  top: 50px;
+  /* top: 50px;*/
   left: 0px;
   z-index: 75;
   width: 600px;

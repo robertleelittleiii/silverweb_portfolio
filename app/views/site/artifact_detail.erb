@@ -14,10 +14,10 @@
         <%=artifact_edit_div(@artifact) %>
         <div class="artifact-pagination">
             <div class="previos_artifact">
-                <%= link_to("Previous Page",{:controller=>:site, :action=>"artifact_detail", :prev=>true, :id=>@artifact} ) %>  
+                <%= link_to("< " + @artifact.previous_in_portfolio.name,{:controller=>:site, :action=>"artifact_detail", :prev=>true, :id=>@artifact} ) %>  
             </div>
             <div  class="next_artifact">
-                <%= link_to("Next Page",{:controller=>:site, :action=>"artifact_detail", :next=>true, :id=>@artifact}) %>
+                <%= link_to(@artifact.next_in_portfolio.name + " >",{:controller=>:site, :action=>"artifact_detail", :next=>true, :id=>@artifact}) %>
             </div>
         </div>
 <div id="artifact-content-block">

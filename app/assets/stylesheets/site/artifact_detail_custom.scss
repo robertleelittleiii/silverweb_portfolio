@@ -21,8 +21,8 @@ div.edit-artifact {
 }
 
 div#page-slider-gallary-page {
-  top: initial !important;
-  height: 500px;
+    top: initial !important;
+    height: 500px;
 }
 
 #page-content {
@@ -40,14 +40,15 @@ ul.slidesjs-pagination {
 
 
 #slides3 a.slidesjs-previous {
+    position: absolute;
     top: initial;
     left: 0px;
-   width: 18px;
-  height: 16px;
- display: block;
+    width: 18px;
+    height: 16px;
+    display: block;
     z-index: 76;
     background-repeat: no-repeat;
-    bottom: -10px;
+    bottom: -25px;
 }
 
 #slides3 a.slidesjs-next{
@@ -55,12 +56,12 @@ ul.slidesjs-pagination {
     top: initial;
     left:initial;
     right: 0px;
-   width: 18px;
-  height: 16px;
- display: block;
+    width: 18px;
+    height: 16px;
+    display: block;
     z-index: 76;
     background-repeat: no-repeat;
-    bottom: -10px;
+    bottom: -25px;
 }
 
 div#artifact-keywords {
@@ -114,14 +115,14 @@ div#close-before-picture {
 }
 
 div#portfolio-footer {
-  bottom: 0px;
-  position: absolute;
-  text-align: right;
-  text-transform: uppercase;
-  color: black;
-  font-family: open_sansbold;
-  padding-bottom: 10px;
-  right: 40px;
+    bottom: 0px;
+    position: absolute;
+    text-align: right;
+    text-transform: uppercase;
+    color: black;
+    font-family: open_sansbold;
+    padding-bottom: 10px;
+    right: 40px;
 }   
 
 div#portfolio-footer a {
@@ -136,13 +137,13 @@ div#portfolio-footer a:hover {
 
 
 div#artifact-content-block {
-  position: relative;
-  width: 250px;
-  border: black;
-  float: left;
-  height: 600px;
-  padding-left: 50px;
-  padding-top: 10px;
+    position: relative;
+    width: 250px;
+    border: black;
+    float: left;
+    height: 600px;
+    padding-left: 50px;
+    padding-top: 10px;
 }
 
 div#artifact-title {
@@ -162,9 +163,9 @@ div#artifact-description {
 }
 
 div#artifact-sharethis {
-  position: absolute;
-  bottom: 10px;
-  right: 50px;
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
 }
 
 div#artifact-sharethis div {
@@ -190,33 +191,34 @@ div a.at-share-btn:hover {
 }
 
 #slides3 {
-  position: relative;
-  /* top: 50px;*/
-  left: 0px;
-  z-index: 75;
-  width: 600px;
+    position: relative;
+    /* top: 50px;*/
+    left: 0px;
+    z-index: 75;
+    width: 600px;
 }
 
 div.next_artifact {
-  text-align: right;
-  display: inline-block;
-  float: right;
-  padding-right: 55px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+    text-align: right;
+    display: inline-block;
+    float: right;
+    padding-right: 55px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 div.previos_artifact {
-  text-align: left;
-  display: inline-block;
-  float: left;
-  padding-left: 55px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+    text-align: left;
+    display: inline-block;
+    float: left;
+    padding-left: 55px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 div.artifact-pagination {
-  display: inline-block;
-  position: relative;
-  width: 100%;
+    display: inline-block;
+    position: relative;
+    width: 100%;
 }
+

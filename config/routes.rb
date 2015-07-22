@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get "portfolio_table"
       get "delete_ajax"
       post "sort"
+      get "portfolio_preferences"
     end
   end
   

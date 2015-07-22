@@ -9,7 +9,7 @@ artifact_edit_dialog = "";
 function artifacteditClickBinding(selector) {
     // selectors .edit-artifact-item, tr.artifact-row 
 
-    $(selector).unbind("click").one("click", function () {
+    $(selector).unbind("click").one("click", function (event) {
         console.log($(this).find('#artifact-id').text());
         event.stopPropagation();
         var artifact_id = $(this).find('#artifact-id').text();

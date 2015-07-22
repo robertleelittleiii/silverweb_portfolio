@@ -28,7 +28,7 @@ class Artifact < ActiveRecord::Base
   def previous_in_portfolio
     artifact_list =  self.portfolio.artifacts.where(:artifact_active=>1).order(:position)
     
-    if artifact_list.null? or artifact_list.length <= 1 then
+    if artifact_list.empty? or artifact_list.length <= 1 then
       return self
     end
     

@@ -38,7 +38,7 @@ class Artifact < ActiveRecord::Base
     if artifact_list.first == self then
       return artifact_list.last
     else
-      return artifact_list[artifact_list.index(self) - 1 ]
+      return artifact_list[artifact_list.index(self) - 1 ] rescue self
     end
   end
   

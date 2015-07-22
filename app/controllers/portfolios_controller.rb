@@ -37,7 +37,7 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios/1/edit
   def edit
-        session[:mainnav_status] = true
+    session[:mainnav_status] = true
 
     @portfolio = Portfolio.find(params[:id])
   end
@@ -61,15 +61,30 @@ class PortfoliosController < ApplicationController
   # PUT /portfolios/1
   # PUT /portfolios/1.json
   def update
-    @portfolio = Portfolio.find(params[:id])
-
+    preferences_update = false
+    
+    if params[:id] = "portfolio_preferences" then
+      eval("Settings." + params["settings"].to_a.first[0] + "='" + params["settings"].to_a.first[1] +"'"   )
+      preferences_update = true
+    else
+    
+      @portfolio = Portfolio.find(params[:id])
+      successfull = @portfolio.update_attributes(portfolio_params)
+    end
+    
     respond_to do |format|
-      if @portfolio.update_attributes(portfolio_params)
-        format.html { redirect_to action: "edit", notice: "Portfolio was successfully updated."}
-        format.json { render :json=> {:notice => 'Portfolio was successfully updated.'} }
+      if preferences_update then
+        format.html {render nothing: true}
+        format.json { render :json=> {:notice => 'Preferences were successfully updated.'} }
+      
       else
-        format.html { render action: "edit" }
-        format.json { render json: @portfolio.errors, status: "unprocessable_entry" }
+        if successfull then
+          format.html { redirect_to action: "edit", notice: "Portfolio was successfully updated."}
+          format.json { render :json=> {:notice => 'Portfolio was successfully updated.'} }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @portfolio.errors, status: "unprocessable_entry" }
+        end
       end
     end
   end
@@ -86,8 +101,8 @@ class PortfoliosController < ApplicationController
     end
   end
   
-   # CREATE_EMPTY_RECORD /portfolios/1
-   # CREATE_EMPTY_RECORD /portfolios/1.json
+  # CREATE_EMPTY_RECORD /portfolios/1
+  # CREATE_EMPTY_RECORD /portfolios/1.json
 
   def create_empty_record
     @portfolio = Portfolio.new
@@ -106,7 +121,7 @@ class PortfoliosController < ApplicationController
       portfolio = Portfolio.find(portfolio_id)
       new_position = counter + ((@current_page - 1) * @portfolios_per_portfolio) + 1
       old_position = portfolio.position
-  #    puts("Portfolio ID->#{portfolio_id}: Old_position: #{portfolio.position}, New Position: #{counter + ((@current_portfolio - 1) * @portfolios_per_portfolio) + 1} ")
+      #    puts("Portfolio ID->#{portfolio_id}: Old_position: #{portfolio.position}, New Position: #{counter + ((@current_portfolio - 1) * @portfolios_per_portfolio) + 1} ")
       if new_position != old_position
         portfolio.position = new_position
         portfolio.save 
@@ -123,13 +138,18 @@ class PortfoliosController < ApplicationController
     render layout: false
   end
   
-   def delete_ajax
+  def delete_ajax
     @portfolio =  Portfolio.find(params[:id])
     @portfolio.destroy
     render nothing: true
   end
   
   
+  def portfolio_preferences
+    @settings = Settings.all 
+
+  end
+   
   private
 
   def current_objects(params={})
@@ -166,7 +186,7 @@ class PortfoliosController < ApplicationController
   end
   
   def portfolio_params
-  params[:portfolio].permit( "name", "description", "meta_description", "meta_keywords", "meta_robot", "created_at", "updated_at", "location", "portfolio_active", "position")
-end
+    params[:portfolio].permit( "name", "description", "meta_description", "meta_keywords", "meta_robot", "created_at", "updated_at", "location", "portfolio_active", "position")
+  end
   
 end

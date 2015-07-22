@@ -25,3 +25,15 @@ table#artifacts-table {
   width: 100% !important;
   padding-top: 10px;
 }
+
+a#new-portfolio {
+  position: absolute;
+}
+.myaccountblock {
+  height: 100%;
+}
+
+a#portfolio-prefs.ui-state-default {
+  float: right;
+  border: 5px double darkgrey;
+}

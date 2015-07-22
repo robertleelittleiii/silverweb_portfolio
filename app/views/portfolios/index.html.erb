@@ -1,13 +1,6 @@
-<div class="hidden-item">
-    <div id="as_window"><%=params[:request_type]=="window"%></div>
-    <div id="dialog-height">650</div>
-    <div id="dialog-width">1050</div>
-    <div id="dialog-name">List Portfolios</div>
-</div>
-
+<%= create_dialog_settings("List Portfolios", "650", "500") %>
 
 <%#=portfolio_attr_display(nil,"true") %>
-<div class="myaccountblock">
   <div align="center">
     <!-- START:flash -->
     <% if flash[:notice] -%>
@@ -20,7 +13,8 @@
   <div id="site-pref-list">
 
     <%= link_to 'New Portfolio',{ :action=>:create_empty_record,:typeofrecord=>"Portfolio"}, :class=>"button-link",:id=>"new-portfolio", :remote=>true%>
-    <p>
+    <%= link_to 'Portfolio Prefs',{ :action=>:portfolio_preferences,:typeofrecord=>"Portfolio"}, :class=>"button-link",:id=>"portfolio-prefs", :remote=>true%>
+ <p>
       </br>
       </br>
     </p>

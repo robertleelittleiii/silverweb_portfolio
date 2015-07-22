@@ -31,16 +31,17 @@ module ArtifactsHelper
     return returnval.html_safe
   end
   
-  def build_slider_gallary_v3(artifact, effect="fade", picture_size=:artifact_slider)
-    effect_type = effect || "fade"    
+  def build_slider_gallary_v3(artifact, effect="", picture_size=:artifact_slider, slider_width="",slider_height="",slider_nav="")
+    
+    # effect_type = effect || "fade"
+    
     if not artifact.blank? then
-      
       returnval = ""
       returnval = returnval + "<div class=\"hidden-item\"> \n"
-      returnval =  returnval + "<div id='slider-width'>1024</div> \n"
-      returnval =  returnval + "<div id='slider-height'>500</div> \n"
-      returnval =  returnval + "<div id='slider-nav'>true</div> \n"
-      returnval =  returnval + "<div id='slider-effect'>#{effect_type}</div> \n"
+      returnval =  returnval + "<div id='slider-width'>#{slider_width}</div> \n" if not slider_width.blank?
+      returnval =  returnval + "<div id='slider-height'>#{slider_height}</div> \n" if not slider_height.blank?
+      returnval =  returnval + "<div id='slider-nav'>#{slider_nav}</div> \n" if not slider_nav.blank?
+      returnval =  returnval + "<div id='slider-effect'>#{effect}</div> \n" if not effect .blank?
       returnval =  returnval + "</div> \n"
       
       returnval = returnval + "<div id=\"slides3\"> \n"

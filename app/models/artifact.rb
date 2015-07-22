@@ -14,21 +14,29 @@ class Artifact < ActiveRecord::Base
   
   def next_in_portfolio 
     artifact_list = self.portfolio.artifacts.where(:artifact_active=>1).order(:position)
+     if artifact_list.length == 1 then
+      return self
+    end
     artifact_list.index(self)
     if artifact_list.last == self then
       return artifact_list.first
-      else
-        return artifact_list[artifact_list.index(self) + 1 ]
+    else
+      return artifact_list[artifact_list.index(self) + 1 ]
     end
   end
   
   def previous_in_portfolio
     artifact_list =  self.portfolio.artifacts.where(:artifact_active=>1).order(:position)
+    
+    if artifact_list.length == 1 then
+      return self
+    end
+    
     artifact_list.index(self)
     if artifact_list.first == self then
       return artifact_list.last
-      else
-        return artifact_list[artifact_list.index(self) - 1 ]
+    else
+      return artifact_list[artifact_list.index(self) - 1 ]
     end
   end
   

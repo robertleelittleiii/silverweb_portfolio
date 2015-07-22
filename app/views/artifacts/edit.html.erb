@@ -14,138 +14,163 @@
       <div id="notice"><%= notice  %></div>
     <% end -%>
     <!-- END:flash -->
-    
+
     <% if @artifact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@artifact.errors.count, "error") %> prohibited this artifact from being saved:</h2>
+      <div id="error_explanation">
+          <h2><%= pluralize(@artifact.errors.count, "error") %> prohibited this artifact from being saved:</h2>
 
-      <ul>
-      <% @artifact.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-    
+          <ul>
+              <% @artifact.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+          </ul>
+      </div>
+    <% end %>
 
 
-<div id="artifact-tabs">
-    <ul>
-        <li><a href="#information-tab">Information</a></li>
-        <li><a href="#description-tab">Description</a></li>
-        <li><a href="#images-tab">Images</a></li>
-    </ul>
-    <div id="information-tab">
-        <div class="cms-content">
-<div class="hidden-item" id="artifact-id"><%= @artifact.id %></div>
 
-<p>
-    <b>Active:</b><br>
-    <%=editablecheckboxedit("artifact_active", @artifact, "Active?")%>
-</p>
+    <div id="artifact-tabs">
+        <ul>
+            <li><a href="#information-tab">Information</a></li>
+            <li><a href="#description-tab">Description</a></li>
+            <li><a href="#images-tab">Images</a></li>
+            <li><a href="#slider-tab">Slider Settings</a></li>
+        </ul>
+        <div id="information-tab">
+            <div class="cms-content">
+                <div class="hidden-item" id="artifact-id"><%= @artifact.id %></div>
 
-<p>
-    <b>Name:</b><br>
-    <%=editablefieldcreate("name", @artifact)%>
-</p>
+                <p>
+                    <b>Active:</b><br>
+                    <%=editablecheckboxedit("artifact_active", @artifact, "Active?")%>
+                </p>
 
-<p> 
-    <b>Tags:(comma separated list)</b></br>
-        <%=editablefieldcreate("tag_list", @artifact)%>
-</p>
+                <p>
+                    <b>Name:</b><br>
+                    <%=editablefieldcreate("name", @artifact)%>
+                </p>
 
- <p>
-                <b>Template:(leave blank for default)</b><br>
-                <%=ajax_select("artifact_action_viewer","artifact",@artifact, @action_viewers, "Choose Viewer...")%><br><br>
+                <p> 
+                    <b>Tags:(comma separated list)</b></br>
+                    <%=editablefieldcreate("tag_list", @artifact)%>
+                </p>
 
-            </p>
-            
-  <div id="artifact-classification">
-  <fieldset class="address-legend" >
-    <legend class="address-lable">Classification</legend>
-    <table  class="address-table">
-      <tbody>
-        <tr>
-          <td>
+                <p>
+                    <b>Template:(leave blank for default)</b><br>
+                    <%=ajax_select("artifact_action_viewer","artifact",@artifact, @action_viewers, "Choose Viewer...")%><br><br>
 
-            Department: </br>
-            <%#=ajax_select2("department_id","artifact",@artifact, create_menu_list("Top Menu"))%>            
-            <%=create_group_checks_live("department_id", @artifact, create_menu_list("Top Menu",false),"department",{:class=>"department-check"} )%>
+                </p>
 
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Category: </br>             
-            <div id="category-div">
-              <%=render(:partial=>"category_div")%>  
-            </div>
-          
+                <div id="artifact-classification">
+                    <fieldset class="address-legend" >
+                        <legend class="address-lable">Classification</legend>
+                        <table  class="address-table">
+                            <tbody>
+                                <tr>
+                                    <td>
+
+                                        Department: </br>
+<%#=ajax_select2("department_id","artifact",@artifact, create_menu_list("Top Menu"))%>            
+                                        <%=create_group_checks_live("department_id", @artifact, create_menu_list("Top Menu",false),"department",{:class=>"department-check"} )%>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Category: </br>             
+                                        <div id="category-div">
+                                            <%=render(:partial=>"category_div")%>  
+                                        </div>
+
 
 <%#=create_group_checks_live("category_id", @artifact, create_menu_list("Top Menu"),"category" )%>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </fieldset>
-</div>
-    </div>
-    </div>
-    <div id="description-tab">
-        <div class="cms-content">
-    <b>Description:</b><br>
-    
-            <%=form_for(@artifact, :remote=>true, :id=>"artifact-description", :format=>:json) do |f| %>
-              <%= f.submit "Update", :class=>"hidden-item"%><br>
-
-              <center>
-                  <%= f.text_area :description, :class => "tinymce-artifact" , :rows => "80", :cols => "120" %>
-                  <%= tinymce_settings(:default,"tinymce_config_artifact",{mode: "exact", selector: "textarea.tinymce-artifact", save_onsavecallback: "myartifactsave", height: "375", width: "950", init_instance_callback: "tinyMcePostInit"})%>   
-             <%#= tinymce :default, mode: "exact", selector: "textarea.tinymce-page" ,save_onsavecallback: "mysave", height: "375", width: "950", init_instance_callback: "tinyMcePostInit"%>
-              </center>
-              <br>
-            <% end %>
-            <div class="hidden-item">
-                <%= form_for Picture.new, :html => {:multipart => true, id: "picture-paste-artifact"} do |f| %>
-                  <span class="btn btn-success fileinput-button">
-                      <i class="glyphicon glyphicon-plus"></i>
-                      <span><%=image_tag("interface/browse.png", :id=>"file-button") %> </span>
-                      <!-- The file input field used as target for the file upload widget -->
-                      <%= f.file_field :image, :multiple=>true , :name=>"picture[image]" %>
-                  </span>
-                <% end %>
-            </div>
-            <script id="template-upload" type="text/x-tmpl">
-                <div class="upload">
-                {%=o.name%}
-                <div class="progress"><div class="bar" style="width: 0%"></div></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
                 </div>
-            </script>
-    
-    
-    
-
-    </div>
-    </div>
- <div id="images-tab">
-        <div class="cms-content">
-
-     <div>
-          <%=image_tag "interface/ajax-loader2.gif", :id=>"loader_progress" ,:style=>"display:none"%>
+            </div>
         </div>
-      <div id="artifact-images">
-      <%= render :partial=>"image_section" %>
-      </div>
+        <div id="description-tab">
+            <div class="cms-content">
+                <b>Description:</b><br>
+
+                <%=form_for(@artifact, :remote=>true, :id=>"artifact-description", :format=>:json) do |f| %>
+                  <%= f.submit "Update", :class=>"hidden-item"%><br>
+
+                  <center>
+                      <%= f.text_area :description, :class => "tinymce-artifact" , :rows => "80", :cols => "120" %>
+                      <%= tinymce_settings(:default,"tinymce_config_artifact",{mode: "exact", selector: "textarea.tinymce-artifact", save_onsavecallback: "myartifactsave", height: "375", width: "950", init_instance_callback: "tinyMcePostInit"})%>   
+  <%#= tinymce :default, mode: "exact", selector: "textarea.tinymce-page" ,save_onsavecallback: "mysave", height: "375", width: "950", init_instance_callback: "tinyMcePostInit"%>
+                  </center>
+                  <br>
+                <% end %>
+                <div class="hidden-item">
+                    <%= form_for Picture.new, :html => {:multipart => true, id: "picture-paste-artifact"} do |f| %>
+                      <span class="btn btn-success fileinput-button">
+                          <i class="glyphicon glyphicon-plus"></i>
+                          <span><%=image_tag("interface/browse.png", :id=>"file-button") %> </span>
+                          <!-- The file input field used as target for the file upload widget -->
+                          <%= f.file_field :image, :multiple=>true , :name=>"picture[image]" %>
+                      </span>
+                    <% end %>
+                </div>
+                <script id="template-upload" type="text/x-tmpl">
+                    <div class="upload">
+                    {%=o.name%}
+                    <div class="progress"><div class="bar" style="width: 0%"></div></div>
+                    </div>
+                </script>
+
+
+
+
+            </div>
+        </div>
+        <div id="images-tab">
+            <div class="cms-content">
+
+                <div>
+                    <%=image_tag "interface/ajax-loader2.gif", :id=>"loader_progress" ,:style=>"display:none"%>
+                </div>
+                <div id="artifact-images">
+                    <%= render :partial=>"image_section" %>
+                </div>
+            </div>
+        </div>
+        <div id="slider-tab">
+            <div class="cms-content">
+                <p>
+                    <b>Show Navigation:</b><br>
+                    <%=editablecheckboxedit("slider_nav", @artifact, "Show?")%>
+                </p>
+
+                <p>
+                    <b>Slider Height/Width</b><br>
+                <div>
+                    <%=editablefieldcreate("slider_height", @artifact)%>
+                    <%=editablefieldcreate("slider_width", @artifact)%>
+                </div>
+                </p>
+
+                <p> 
+                    <b>Slider Effect:</b></br>
+                    <%=editablefieldcreate("slider_effect", @artifact)%>
+                </p>
+               <p> 
+                    <b>Slider Play Speed:</b></br>
+                    <%=editablefieldcreate("slider_play_speed", @artifact)%>
+                </p>
+            </div>
+        </div>
+
+
+<%#= link_to '<< Back', request.env['HTTP_REFERER'], :class=>"button-link" %>   
+
+<%#= link_to 'Preview',  url_for(:controller=> :site, :action=>:artifact_detail, :id=>@artifact, :only_path=>true) ,:class=>"button-link" %> </p>
+<%#= link_to 'Preview Custom',  url_for(:controller=> :site, :action=>:artifact_detail_custom, :id=>@artifact, :only_path=>true) ,:class=>"button-link" %> </p>
+
+
     </div>
-  </div>
-
-
-  
-    <%#= link_to '<< Back', request.env['HTTP_REFERER'], :class=>"button-link" %>   
-    
-    <%#= link_to 'Preview',  url_for(:controller=> :site, :action=>:artifact_detail, :id=>@artifact, :only_path=>true) ,:class=>"button-link" %> </p>
-    <%#= link_to 'Preview Custom',  url_for(:controller=> :site, :action=>:artifact_detail_custom, :id=>@artifact, :only_path=>true) ,:class=>"button-link" %> </p>
-
-
-</div>
 

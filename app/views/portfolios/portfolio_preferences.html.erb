@@ -1,0 +1,57 @@
+<div class="hidden-item">
+    <div id="as_window"><%=params[:request_type]=="window"%></div>
+    <div id="dialog-height">400</div>
+    <div id="dialog-width">500</div>
+    <div id="dialog-name">Portfolio Settings </div>
+</div>
+
+
+<div id="portfolio-settings-tabs">
+    <ul>
+        <li><a href="#portfolios-tab">Portfolio Views</a></li>
+        <li><a href="#assets-tab">Assets Views</a></li>
+    </ul>
+    <div id="portfolios-tab">
+        <div class="cms-content">
+
+       <p>
+        <b>Web Site URL</b><br>
+        <%=editablefieldcreate("company_url", @settings)%>
+      </p>
+
+        </div>
+        </p>
+    </div>
+    <div id="assets-tab">
+        <div class="cms-content">
+            <p>
+        <p>
+                <b>Show Navigation:</b><br>
+                    <%=editablecheckboxedit("slider_nav", @settings, "Show?")%>
+                </p>
+
+                <p>
+                    <b>Slider Height/Width</b><br>
+                <div>
+                    <%=editablefieldcreate("slider_height", @settings)%>
+                    <%=editablefieldcreate("slider_width", @settings)%>
+                </div>
+                </p>
+
+                <p> 
+                    <b>Slider Effect:</b></br>
+                    <%=editablefieldcreate("slider_effect", @settings)%>
+                </p>
+               <p> 
+                    <b>Slider Play Speed:</b></br>
+                    <%=editablefieldcreate("slider_play_speed", @settings)%>
+                </p>
+               
+
+        </div>
+
+
+    </div>
+
+    
+</div>

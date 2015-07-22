@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 21, 2015, 11:27:46 PM
+    Author     : rlittle
+*/
+
+a#portfolio-prefs.ui-state-default {
+  float: right;
+  border: 5px double darkgrey;
+  margin: 20px;
+
+}
+
+a#new-portfolio {
+  border: 3px solid darkgray;
+  margin: 20px;
+}

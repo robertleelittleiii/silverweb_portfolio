@@ -329,7 +329,9 @@ class ArtifactsController < ApplicationController
   end
   
   def artifact_params
-  params[:artifact].permit("name", "description", "portfolio_id", "created_at", "updated_at", "position", "artifact_active", "tag_list", "artifact_action_viewer")
+  params[:artifact].permit("name", "description", "portfolio_id", "created_at", "updated_at", "position", "artifact_active", "tag_list", "artifact_action_viewer","slider_width","slider_height","slider_effect","slider_play_speed","slider_nav")
+ 
 end
   
 end
+ 

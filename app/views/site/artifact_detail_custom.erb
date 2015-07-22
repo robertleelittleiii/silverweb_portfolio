@@ -1,11 +1,11 @@
 <div id="attr-pages" class="hidden-item">
   <div id="full-screen">true</div>
   <div id="admin-active"><%=@admin_active=admin_active() || "" %></div>
-  <div id="slider-effect">slide</div>
-  <div id="play_speed">0</div>
-  <div id="slider-width">600</div>
-  <div id="slider-height">375</div>
-  <div id="slider-nav">true</div>
+  <div id="slider-effect"><%=Settings.slider_effect || "slide"%></div>
+  <div id="play_speed"><%=@artifact.slider_play_speed || Settings.slider_play_speed || "0"%></div>
+  <div id="slider-width"><%=@artifact.slider_width || Settings.slider_width || "600"%></div>
+  <div id="slider-height"><%=@artifact.slider_height || Settings.slider_height || "375"%></div>
+  <div id="slider-nav"><%= Settings.slider_nav || "true"%></div>
   <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54dd208a60cb2699" async="async"></script>
 
@@ -47,10 +47,11 @@
 </div>
 
 <div id="page-slider-gallary-page">
-      <%=  build_slider_gallary_v3(@artifact,"",:artifact_custom_slider) %>
+      <%=build_slider_gallary_v3(@artifact,"",:artifact_custom_slider) %>
  </div>
+    
 <div id="portfolio-footer">
          <%=link_to("<< return", request.env['HTTP_REFERER']) %>
-
   </div>
+    
 </div>

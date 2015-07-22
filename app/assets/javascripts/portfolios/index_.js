@@ -5,6 +5,7 @@
 
 var portfolios_index_callDocumentReady_called = false;
 var portfolioTableAjax = "";
+var portfolioPrefsDialog = "";
 
 $(document).ready(function () {
     if (!portfolios_index_callDocumentReady_called)
@@ -24,8 +25,8 @@ $(document).ready(function () {
 function portfolios_index_callDocumentReady() {
     requireCss("tables.css");
     require("portfolios/shared.js");
-    
-  //  Required scripts (loaded for this js file)
+
+    //  Required scripts (loaded for this js file)
     //
 
     // reatePortfolioDialog();
@@ -65,13 +66,14 @@ function portfolios_index_callDocumentReady() {
 //        $('#edit-password-dialog').dialog('close');
 //    });
 
-    
+
 
 
 //    createPasswordDialog();
 //    createPortfolioDialog();
     bindNewPortfolio();
     $("a.button-link").button();
+    bindPreferences();
 
 }
 
@@ -80,7 +82,7 @@ function deletePortfolio(portfolio_id)
     var answer = confirm('Are you sure you want to delete this?')
     if (answer) {
         $.ajax({
-            url: '/portfolios/delete_ajax/?id='+ + portfolio_id,
+            url: '/portfolios/delete_ajax/?id=' + +portfolio_id,
             success: function (data)
             {
                 setUpPurrNotifier("Notice", "Item Successfully Deleted.");
@@ -202,8 +204,8 @@ function createPortfolioTable() {
 }
 
 function bindNewPortfolio() {
-    
-   $('a#new-portfolio').unbind().bind('ajax:beforeSend', function (e, xhr, settings) {
+
+    $('a#new-portfolio').unbind().bind('ajax:beforeSend', function (e, xhr, settings) {
         xhr.setRequestHeader('accept', '*/*;q=0.5, text/html, ' + settings.accepts.html);
         $("body").css("cursor", "progress");
     }).bind('ajax:success', function (xhr, data, status) {
@@ -211,8 +213,8 @@ function bindNewPortfolio() {
         portfolioTableAjax.fnDraw();
         setUpPurrNotifier("Notice", "New Portfolio Created!'");
     }).bind('ajax:error', function (evt, xhr, status, error) {
-                setUpPurrNotifier("Error", "Portfolio Creation Failed!'");
-    }); 
+        setUpPurrNotifier("Error", "Portfolio Creation Failed!'");
+    });
 
 }
 
@@ -335,3 +337,33 @@ function bindDeletePortfolio() {
 //}
 
 
+
+function bindPreferences() {
+
+    $('a#portfolio-prefs').unbind().bind('ajax:beforeSend', function (e, xhr, settings) {
+        xhr.setRequestHeader('accept', '*/*;q=0.5, text/html, ' + settings.accepts.html);
+        $("body").css("cursor", "progress");
+    }).bind('ajax:success', function (xhr, data, status) {
+        $("body").css("cursor", "default");
+        portfolioPrefsDialog = createAppDialog(data, "portfolio-prefs-dialog");
+        portfolioPrefsDialog.dialog('open');
+        portfolioPrefsDialog.dialog({
+            close: function (event, ui) {
+                portfolioPrefsDialog.html("");
+                portfolioPrefsDialog.dialog("destroy");
+            }
+        });
+        require("portfolios/portfolio_preferences.js");
+        portfolio_preferences_callDocumentReady();
+        
+        //update_rolls_callDocumentReady();
+
+
+        // setupRolesSelection();
+        // 
+    }).bind('ajax:error', function (evt, xhr, status, error) {
+        setUpPurrNotifier("Error", "Prefs could not be opened!'");
+    });
+
+
+}

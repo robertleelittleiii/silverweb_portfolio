@@ -21,10 +21,10 @@
             </div>
 
             <div id="portfolio-name">
-                <%= @portfolio.location.include?("http://") ? link_to(@portfolio.name.to_s.html_safe,@portfolio.location.to_s,:title=>"Go to web site.") : @portfolio.name.to_s.html_safe %></br>
+                <%= @portfolio.location.to_s.include?("http://") ? link_to(@portfolio.name.to_s.html_safe,@portfolio.location.to_s,:title=>"Go to web site.") : @portfolio.name.to_s.html_safe %></br>
             </div>
 
-            <div id="portfolio-location" class="<%= @portfolio.location.include?("http://") ? "hidden-item":"" %> ">
+            <div id="portfolio-location" class="<%= @portfolio.location.to_s.include?("http://") ? "hidden-item":"" %> ">
                 <%=@portfolio.location.to_s.html_safe %></br>
             </div>
 

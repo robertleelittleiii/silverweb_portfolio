@@ -1,5 +1,6 @@
 <%=artifact_edit_div(@artifact) %>
-<div class="artifact-pagination">
+<div class="artifact-pagination-float">
+    <div class="artifact-pagination">
             <div class="previos_artifact">
                 <%= link_to("< " + @artifact.previous_in_portfolio.name,{:controller=>:site, :action=>"artifact_detail", :prev=>true, :id=>@artifact} ) %>  
             </div>
@@ -7,6 +8,7 @@
                 <%= link_to(@artifact.next_in_portfolio.name + " >",{:controller=>:site, :action=>"artifact_detail", :next=>true, :id=>@artifact}) %>
             </div>
         </div>
+</div>
 
 <div class="artifact-detail">
     <div id="attr-pages" class="hidden-item">

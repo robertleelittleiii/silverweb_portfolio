@@ -63,7 +63,7 @@ class PortfoliosController < ApplicationController
   def update
     preferences_update = false
     
-    if params[:id] = "portfolio_preferences" then
+    if params[:id] == "portfolio_preferences" then
       eval("Settings." + params["settings"].to_a.first[0] + "='" + params["settings"].to_a.first[1] +"'"   )
       preferences_update = true
     else

@@ -95,6 +95,9 @@ module ArtifactsHelper
       returnval <<              link_to(artifact.next_in_portfolio.name + " >",{:controller=>:site, :action=>action_name, :next=>true, :id=>artifact})
       returnval << "        </div>"
       returnval << "    </div>"
+      
+      return returnval.html_safe
+
     end
   end
 end

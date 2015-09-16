@@ -1,20 +1,20 @@
 module ArtifactsHelper
   
-#  def artifact_edit_div(artifact)
-#    returnval=""
-#    if session[:user_id] then
-#      user=User.find(session[:user_id])
-#      if user.roles.detect{|role|((role.name=="Admin") | (role.name=="Site Owner"))} then
-#        returnval="<div id=\"edit-artifact\" class=\"edit-artifact\">"
-#        returnval=returnval+link_to(image_tag("interface/edit.png",border: "0", class: "imagebutton", title: "Edit this artifact"),controller: 'artifacts', id: artifact.id ,  action: 'edit')
-#        returnval=returnval + "</div>"
-#
-#      end
-#    end
-#    return returnval.html_safe
-#  end
+  #  def artifact_edit_div(artifact)
+  #    returnval=""
+  #    if session[:user_id] then
+  #      user=User.find(session[:user_id])
+  #      if user.roles.detect{|role|((role.name=="Admin") | (role.name=="Site Owner"))} then
+  #        returnval="<div id=\"edit-artifact\" class=\"edit-artifact\">"
+  #        returnval=returnval+link_to(image_tag("interface/edit.png",border: "0", class: "imagebutton", title: "Edit this artifact"),controller: 'artifacts', id: artifact.id ,  action: 'edit')
+  #        returnval=returnval + "</div>"
+  #
+  #      end
+  #    end
+  #    return returnval.html_safe
+  #  end
   
-    def artifact_edit_div(artifact, div_id="")
+  def artifact_edit_div(artifact, div_id="")
     returnval=""
     begin
       if session[:user_id] then
@@ -82,5 +82,19 @@ module ArtifactsHelper
     returnval=returnval + "</div>"
     return returnval.html_safe
  
+  end
+  
+  def artifact_pagination(artifact, action_name)
+    returnval = ""
+    if artifact.previous_in_portfolio.name != artifact.next_in_portfolio.name then
+      returnval << "<div class='artifact-pagination'>"
+      returnval << "        <div class='previos_artifact'>"
+      returnval <<             link_to("< " + artifact.previous_in_portfolio.name,{:controller=>:site, :action=>action_name, :prev=>true, :id=>artifact} )  
+      returnval << "        </div>"
+      returnval << "        <div  class='next_artifact'>"
+      returnval <<              link_to(artifact.next_in_portfolio.name + " >",{:controller=>:site, :action=>action_name, :next=>true, :id=>artifact})
+      returnval << "        </div>"
+      returnval << "    </div>"
+    end
   end
 end

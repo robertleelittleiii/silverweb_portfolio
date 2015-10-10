@@ -86,18 +86,21 @@ module ArtifactsHelper
   
   def artifact_pagination(artifact, action_name)
     returnval = ""
-    if artifact.previous_in_portfolio.name != artifact.next_in_portfolio.name then
-      returnval << "<div class='artifact-pagination'>"
-      returnval << "        <div class='previos_artifact'>"
-      returnval <<             link_to("< " + artifact.previous_in_portfolio.name,{:controller=>:site, :action=>action_name, :prev=>true, :id=>artifact} )  
-      returnval << "        </div>"
-      returnval << "        <div  class='next_artifact'>"
-      returnval <<              link_to(artifact.next_in_portfolio.name + " >",{:controller=>:site, :action=>action_name, :next=>true, :id=>artifact})
-      returnval << "        </div>"
-      returnval << "    </div>"
+    
+    if  Settings.artifact_nav=="true" then
+      if artifact.previous_in_portfolio.name != artifact.next_in_portfolio.name then
+        returnval << "<div class='artifact-pagination'>"
+        returnval << "        <div class='previos_artifact'>"
+        returnval <<             link_to("< " + artifact.previous_in_portfolio.name,{:controller=>:site, :action=>action_name, :prev=>true, :id=>artifact} ) rescue "" 
+        returnval << "        </div>"
+        returnval << "        <div  class='next_artifact'>"
+        returnval <<              link_to(artifact.next_in_portfolio.name + " >",{:controller=>:site, :action=>action_name, :next=>true, :id=>artifact}) rescue "" 
+        returnval << "        </div>"
+        returnval << "    </div>"
       
-      return returnval.html_safe
+        return returnval.html_safe
 
+      end
     end
   end
 end

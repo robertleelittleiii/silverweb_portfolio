@@ -55,7 +55,7 @@ function activate_slides() {
         slideshow_nav_pagination = $("#slider-nav").text().trim();
         slideshow_effect = $("#slider-effect").text().trim();
         slideshow_auto = $("#slider-auto").text().trim() || false;
-        slideshow_speed = $("#slider-speed").text().trim() || "5000";
+        slideshow_speed = $("#slider-speed").text().trim() || "0";
         slideshow_play = slideshow_speed > 0;
 
 

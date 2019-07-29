@@ -149,7 +149,7 @@ class SiteController < ApplicationController
     #      @portfolios_list = Portfolio.all
     #    end
 
-    @portfolio_ids = @portfolios_list.collect(&:id)
+    @portfolio_ids = @portfolios_list.pluck(:id)
 
     puts("@portfolio_ids --> #{@portfolios_list.inspect}")
 
@@ -235,7 +235,7 @@ class SiteController < ApplicationController
     #    @artifacts_list = Artifact.all
     #  end
 
-    @artifact_ids = @artifacts_list.collect(&:id)
+    @artifact_ids = @artifacts_list.pluck(:id)
 
     puts("@artifact_ids --> #{@artifact_ids.inspect}")
 
@@ -321,7 +321,7 @@ class SiteController < ApplicationController
     #    @artifacts_list = Artifact.all
     #  end
 
-    @artifact_ids = @artifacts_list.collect(&:id)
+    @artifact_ids = @artifacts_list.pluck(:id)
 
     puts("@artifact_ids --> #{@artifact_ids.inspect}")
 

@@ -1,4 +1,6 @@
-class CreatePortfolios < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreatePortfolios < ActiveRecord::Migration[5.0]
   def self.up
     create_table :portfolios do |t|
       t.string :name

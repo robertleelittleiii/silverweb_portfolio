@@ -15,7 +15,13 @@ a#portfolio-prefs.ui-state-default {
 
 }
 
-a#new-portfolio {
+/* a#new-portfolio {
   border: 3px solid darkgray;
   margin: 20px;
+} 
+*/
+
+div#site-pref-list.portfolio-list a.button-link {
+    float: left;
+    margin: 5px;
 }

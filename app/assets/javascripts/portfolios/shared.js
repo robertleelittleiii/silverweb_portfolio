@@ -43,8 +43,8 @@ function portfolioeditClickBinding(selector) {
                        
 
                         tinyMCE.editors[0].destroy();
-                        $('#edit-portfolio-dialog').html("");
-                        $('#edit-portfolio-dialog').dialog("destroy");
+//                        $(portfolio_edit_dialog).html("");
+//                        $(portfolio_edit_dialog).dialog("destroy");
                     }}, "");
 //                portfolio_edit_dialog.dialog({
 //                    close: function (event, ui) {
@@ -108,7 +108,11 @@ function show_portfolio(portfolio_id) {
             if (typeof (call_document_ready_on_portfolio_detail) != "undefined") {
                 call_document_ready_on_portfolio_detail();
             }
-            setUpOrderChange();
+            
+            if (typeof (setUpOrderChange) != "undefined") {
+                setUpOrderChange();
+            }
+            
             enablePortfolioEdit();
             enableArtifactEdit();
             enableSliderEdit();

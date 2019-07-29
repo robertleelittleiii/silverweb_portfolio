@@ -26,9 +26,12 @@ table#artifacts-table {
   padding-top: 10px;
 }
 
+/*
 a#new-portfolio {
   position: absolute;
 }
+*/
+
 .myaccountblock {
   height: 100%;
 }
@@ -36,4 +39,8 @@ a#new-portfolio {
 a#portfolio-prefs.ui-state-default {
   float: right;
   border: 5px double darkgrey;
+}
+
+table#portfolio-table {
+    width: 100%;
 }

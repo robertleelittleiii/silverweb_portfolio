@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class PortfoliosController < ApplicationController
   # uses_tiny_mce(:options => AppConfig.full_mce_options, :only => [:new, :edit])
 
-  
   # GET /portfolios
   # GET /portfolios.json
   def index
@@ -9,7 +10,7 @@ class PortfoliosController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @portfolios} 
+      format.json { render json: @portfolios }
     end
   end
 
@@ -31,7 +32,7 @@ class PortfoliosController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @portfolio}
+      format.json { render json: @portfolio }
     end
   end
 
@@ -49,10 +50,10 @@ class PortfoliosController < ApplicationController
 
     respond_to do |format|
       if @portfolio.save
-        format.html { redirect_to @portfolio, notice: "Portfolio was successfully created." }
+        format.html { redirect_to @portfolio, notice: 'Portfolio was successfully created.' }
         format.json { render json: @portfolio, status: :created, location: @portfolio }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @portfolio.errors, status: :unprocessable_entry }
       end
     end
@@ -62,28 +63,28 @@ class PortfoliosController < ApplicationController
   # PUT /portfolios/1.json
   def update
     preferences_update = false
-    
-    if params[:id] == "portfolio_preferences" then
-      eval("Settings." + params["settings"].to_a.first[0] + "='" + params["settings"].to_a.first[1] +"'"   )
+
+    if params[:id] == 'portfolio_preferences'
+      eval('Settings.' + params['settings'].to_a.first[0] + "='" + params['settings'].to_a.first[1] + "'")
       preferences_update = true
     else
-    
+
       @portfolio = Portfolio.find(params[:id])
       successfull = @portfolio.update_attributes(portfolio_params)
     end
-    
+
     respond_to do |format|
-      if preferences_update then
-        format.html {render nothing: true}
-        format.json { render :json=> {:notice => 'Preferences were successfully updated.'} }
-      
+      if preferences_update
+        format.html { head :ok }
+        format.json { render json: { notice: 'Preferences were successfully updated.' } }
+
       else
-        if successfull then
-          format.html { redirect_to action: "edit", notice: "Portfolio was successfully updated."}
-          format.json { render :json=> {:notice => 'Portfolio was successfully updated.'} }
+        if successfull
+          format.html { redirect_to action: 'edit', notice: 'Portfolio was successfully updated.' }
+          format.json { render json: { notice: 'Portfolio was successfully updated.' } }
         else
-          format.html { render action: "edit" }
-          format.json { render json: @portfolio.errors, status: "unprocessable_entry" }
+          format.html { render action: 'edit' }
+          format.json { render json: @portfolio.errors, status: 'unprocessable_entry' }
         end
       end
     end
@@ -100,7 +101,7 @@ class PortfoliosController < ApplicationController
       format.json { head :ok }
     end
   end
-  
+
   # CREATE_EMPTY_RECORD /portfolios/1
   # CREATE_EMPTY_RECORD /portfolios/1.json
 
@@ -109,14 +110,14 @@ class PortfoliosController < ApplicationController
     @portfolio.portfolio_active = true
     @portfolio.position = 99
     @portfolio.save
-    
+
     redirect_to(controller: :portfolios, action: :edit, id: @portfolio)
   end
 
   def sort
     @portfolios_per_portfolio = Settings.portfolios_per_portfolio.to_i || 8
     @current_page = params[:page].to_i
-    
+
     params['portfolio'].each_with_index do |portfolio_id, counter|
       portfolio = Portfolio.find(portfolio_id)
       new_position = counter + ((@current_page - 1) * @portfolios_per_portfolio) + 1
@@ -124,69 +125,67 @@ class PortfoliosController < ApplicationController
       #    puts("Portfolio ID->#{portfolio_id}: Old_position: #{portfolio.position}, New Position: #{counter + ((@current_portfolio - 1) * @portfolios_per_portfolio) + 1} ")
       if new_position != old_position
         portfolio.position = new_position
-        portfolio.save 
+        portfolio.save
       end
-
     end
-    render nothing: true
-
+    head :ok
   end
-  
+
   def portfolio_table
     @objects = current_objects(params)
     @total_objects = total_objects(params)
     render layout: false
   end
-  
-  def delete_ajax
-    @portfolio =  Portfolio.find(params[:id])
-    @portfolio.destroy
-    render nothing: true
-  end
-  
-  
-  def portfolio_preferences
-    @settings = Settings.all 
 
+  def delete_ajax
+    @portfolio = Portfolio.find(params[:id])
+    @portfolio.destroy
+    head :ok
   end
-   
+
+  def portfolio_preferences
+    @settings = Settings.all
+  end
+
   private
 
-  def current_objects(params={})
-    current_portfolio = (params[:iDisplayStart].to_i/params[:iDisplayLength].to_i rescue 0)+1
-    @current_objects = Portfolio.page(current_portfolio).per(params[:iDisplayLength]).order("#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}").where(conditions(params))
+  def current_objects(params = {})
+    current_portfolio = (begin
+                           params[:iDisplayStart].to_i / params[:iDisplayLength].to_i
+                         rescue StandardError
+                           0
+                         end) + 1
+    @current_objects = Portfolio.page(current_portfolio).per(params[:iDisplayLength]).order("#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || 'DESC'}").where(conditions(params))
   end
-  
 
-  def total_objects(params={})
-    @total_objects = Portfolio.where(conditions(params)).count()
+  def total_objects(params = {})
+    @total_objects = Portfolio.where(conditions(params)).count
   end
 
   def datatable_columns(column_id)
     puts(column_id)
     case column_id.to_i
     when 0
-      return "`portfolios`.`id`"
+      return '`portfolios`.`id`'
     when 1
-      return "`portfolios`.`name`"
+      return '`portfolios`.`name`'
     else
-      return "`portfolios`.`description`"
+      return '`portfolios`.`description`'
     end
   end
 
-      
-  def conditions(params={})
-    
+  def conditions(params = {})
     conditions = []
-   
-    conditions << "(portfolios.id LIKE '%#{params[:sSearch]}%' OR
-       portfolios.name LIKE '%#{params[:sSearch]}%' OR 
-       portfolios.description LIKE '%#{params[:sSearch]}%')" if(params[:sSearch])
-    return conditions.join(" AND ")
+
+    if params[:sSearch]
+      conditions << "(portfolios.id LIKE '%#{params[:sSearch]}%' OR
+         portfolios.name LIKE '%#{params[:sSearch]}%' OR
+         portfolios.description LIKE '%#{params[:sSearch]}%')"
+    end
+    conditions.join(' AND ')
   end
-  
+
   def portfolio_params
-    params[:portfolio].permit( "name", "description", "meta_description", "meta_keywords", "meta_robot", "created_at", "updated_at", "location", "portfolio_active", "position")
+    params[:portfolio].permit('name', 'description', 'meta_description', 'meta_keywords', 'meta_robot', 'created_at', 'updated_at', 'location', 'portfolio_active', 'position')
   end
-  
 end

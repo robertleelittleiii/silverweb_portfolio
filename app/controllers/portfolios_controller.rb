@@ -65,8 +65,9 @@ class PortfoliosController < ApplicationController
     preferences_update = false
 
     if params[:id] == 'portfolio_preferences'
-      eval('Settings.' + params['settings'].to_a.first[0] + "='" + params['settings'].to_a.first[1] + "'")
-      preferences_update = true
+     params_hash = preferences_params
+     eval("Settings.#{params_hash.keys.first}=\"#{params_hash.values.first}\"")
+     preferences_update = true
     else
 
       @portfolio = Portfolio.find(params[:id])
@@ -188,4 +189,9 @@ class PortfoliosController < ApplicationController
   def portfolio_params
     params[:portfolio].permit('name', 'description', 'meta_description', 'meta_keywords', 'meta_robot', 'created_at', 'updated_at', 'location', 'portfolio_active', 'position')
   end
+  
+  def preferences_params
+    params.require(:settings).permit!
+
+end
 end
